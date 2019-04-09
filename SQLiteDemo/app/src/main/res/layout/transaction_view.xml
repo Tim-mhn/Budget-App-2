@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardBackgroundColor="@color/cardview_light_background"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="hku.cs.myrecyclerview.MainTransactions">
+
+        <ImageView
+            android:id="@+id/ivSpot"
+            android:layout_centerVertical="true"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/burger"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/ivSpot"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            tools:text="Apr. 16, 2019" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/tvDate"
+            android:layout_below="@id/tvDate"
+            android:layout_toStartOf="@+id/tvAmount"
+            android:maxLines="2"
+            android:textSize="12sp"
+            tools:text="Burger at the stadium with my buddiesrgrrg." />
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:textColor="#880088"
+            android:textSize="22sp"
+            tools:text="- $150" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/tvDate"
+            android:layout_below="@id/tvDescription"
+            android:layout_marginEnd="8dp">
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0000ff"
+                android:textSize="14sp"
+                tools:text="Nightlife"/>
+            <TextView
+                android:id="@+id/tvBalance1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:textColor="#880088"
+                android:textSize="12sp"
+                tools:text="Balance: $240"/>
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

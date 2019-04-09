@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SQLiteDemo</string>
+    <string name="text_tvRowCount">(row number/ total rows)</string>
+    <string name="text_Insert">Insert</string>
+    <string name="text_Query">Query</string>
+    <string name="text_Update">Update</string>
+    <string name="text_Delete">Delete</string>
+    <string name="text_TitleSpot">Spots</string>
+    <string name="title_transactions">Transactions</string>
+    <string name="text_SpotId">ID Number</string>
+    <string name="text_SpotName">Name</string>
+    <string name="text_SpotWeb">Web</string>
+    <string name="text_SpotPhone">Phone</string>
+    <string name="text_SpotAddress">Address</string>
+    <string name="text_Clear">Clear</string>
+    <string name="text_btNext">Next</string>
+    <string name="text_btBack">Back</string>
+    <string name="text_btCancel">Cancel</string>
+    <string name="btTakePicture">Take Picture</string>
+    <string name="btPickPicture">Pick Picture</string>
+    <string name="text_Amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="new_transaction">New Transaction</string>
+    <string name="add">Add</string>
+    <string name="description">Description</string>
+    <string name="currency">$</string>
+    <string name="update">Update</string>
+
+    <string name="msg_InsertSuccess">Insert successfully</string>
+    <string name="msg_InsertFail">Insert fail</string>
+    <string name="msg_NameIsInvalid">Spot name is invalid</string>
+    <string name="msg_NoImage">No image</string>
+    <string name="msg_NoDataFound">No data found</string>
+    <string name="msg_RowDeleted">row deleted</string>
+    <string name="msg_RowUpdated">row updated</string>
+    <string name="msg_NoCameraAppsFound">no camera apps found</string>
+    <string name="text_NotGranted">not granted</string>
+    <string name="text_SpotDetail">Spot Detail</string>
+    <string name="text_NoDataFound">no data found</string>
+
+    <string-array name="categories_array">
+        <item>Nightlife</item>
+        <item>Dinning</item>
+        <item>Groceries</item>
+        <item>Transport</item>
+        <item>Housing</item>
+    </string-array>
+
+</resources>
