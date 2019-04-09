@@ -64,6 +64,11 @@ public class MainTransactions extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onProgressBarClick(View view) {
+        Intent intent = new Intent(this, NewTransaction.class);
+        startActivity(intent);
+    }
+
     private class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapter.SpotViewHolder> {
         Context context;
         List<Transaction> spotList;

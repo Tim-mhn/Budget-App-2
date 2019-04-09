@@ -27,6 +27,7 @@
     <string name="description">Description</string>
     <string name="currency">$</string>
     <string name="update">Update</string>
+    <string name="text_tvTotalExpenses">Expenses this month</string>
 
     <string name="msg_InsertSuccess">Insert successfully</string>
     <string name="msg_InsertFail">Insert fail</string>
