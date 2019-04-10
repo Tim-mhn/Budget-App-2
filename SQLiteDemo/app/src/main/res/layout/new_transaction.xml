@@ -190,32 +190,6 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
-        <!--<RelativeLayout
-            android:id="@+id/RelativeLayout1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp">
-
-            <Button
-                android:id="@+id/btFinishInsert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toStartOf="@+id/btCancel"
-                android:onClick="onInsertClick"
-                android:text="@string/text_Insert" />
-
-            <Button
-                android:id="@+id/btCancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/btFinishInsert"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:onClick="onCancelClick"
-                android:text="@string/text_btCancel" />
-
-        </RelativeLayout>-->
     </LinearLayout>
 
 </ScrollView>

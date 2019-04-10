@@ -58,7 +58,7 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
 //        String[] args = {};
 //        Cursor cursor = db.rawQuery(sql, args);
 
-        List<Transaction> spotList = new ArrayList<>();
+        List<Transaction> transactionList = new ArrayList<>();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String amount = cursor.getString(1);
@@ -67,10 +67,10 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
             String category = cursor.getString(4);
             String date = cursor.getString(5);
             Transaction t = new Transaction(id, amount, description, type, category, date);
-            spotList.add(t);
+            transactionList.add(t);
         }
         cursor.close();
-        return spotList;
+        return transactionList;
     }
 
     public Transaction findById(int id) {
