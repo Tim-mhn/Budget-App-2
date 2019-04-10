@@ -103,7 +103,6 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
         values.put(COL_type, t.getType());
         values.put(COL_category, t.getCategory());
         values.put(COL_date, t.getDate());
-        //values.put(COL_amount, t.getAmount());
         return db.insert(TABLE_NAME, null, values);
     }
 

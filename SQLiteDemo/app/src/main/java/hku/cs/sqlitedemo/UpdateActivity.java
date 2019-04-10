@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -40,6 +41,7 @@ public class UpdateActivity extends AppCompatActivity {
     private int year;
     private int month;
     private int day;
+
 
     private Transaction transaction; // Transaction which we want to update
     private static final int DATE_DIALOG_ID = 0;
@@ -97,17 +99,12 @@ public class UpdateActivity extends AppCompatActivity {
 
 
     private void setupTypeRadioGroup(){
-        int count = rgType.getChildCount();
-        for (int i=0; i<count; i++){
-            View child = rgType.getChildAt(i);
-            if (child instanceof RadioButton){
-                RadioButton btn = (RadioButton) child;
-                if(btn.getText().equals(transaction.getCategory())){
-                    btn.setChecked(!btn.isSelected());
-                }
 
-            }
+        int index = 0;
+        if(transaction.getType().equals("Income")){
+            index = 1;
         }
+        ((RadioButton) rgType.getChildAt(index)).setChecked(true); // we check one of the buttons in the type button group
     }
     private void setupCategoriesSpinner(){
 
@@ -149,7 +146,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         int counter = categoriesList.indexOf(category);
         if(counter == -1) {
-            counter = 1;
+            counter = 2;
         }
         spinCategory.setAdapter(adapter);
         spinCategory.setSelection(counter); //display initially chosen category
@@ -198,10 +195,11 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
 
-        year = transaction.getYear();
-        month = transaction.getMonth();
-        day = transaction.getDay();
-        updateDateDisplay();
+
+
+        year = Integer.parseInt(transaction.getYear());
+        month = transaction.getMonthInt()+1;
+        day = Integer.parseInt(transaction.getDay());
 
     }
 
@@ -280,4 +278,6 @@ public class UpdateActivity extends AppCompatActivity {
             transactionsDb.close();
         }
     }
+
+
 }

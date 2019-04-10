@@ -8,9 +8,6 @@ public class Transaction {
     private String category;
     private String date;
 
-    private int year;
-    private int month;
-    private int day;
 
 
     public Transaction(String amount, String description, String type, String category, String date) {
@@ -26,16 +23,6 @@ public class Transaction {
         this.date = date;
     }
 
-    public Transaction(String amount, String description, String type, String category, String date, int year, int month, int day) {
-        this.amount = amount;
-        this.description = description;
-        this.type = type;
-        this.category = category;
-        this.date = date;
-        this.year = year;
-        this.month = month;
-        this.day = day;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -85,27 +72,31 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getYear() {
-        return year;
+    public String[] getDateElements(){
+        return this.date.split("[, ]+");
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public String getDay(){
+        return this.getDateElements()[1];
     }
 
-    public int getMonth() {
-        return month;
+    public String getMonth(){
+        return this.getDateElements()[0];
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public int getMonthInt(){
+        String month = this.getMonth();
+        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+        int i = 0; // Month number
+        while(!months[i].equals(month)){
+            i++;
+        }
+        return i;
+
     }
 
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
+    public String getYear(){
+        return this.getDateElements()[2];
     }
 }
