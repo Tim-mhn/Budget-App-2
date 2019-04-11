@@ -100,6 +100,9 @@ public class Transaction {
         return this.getDateElements()[2];
     }
 
+    // Method used by the TransactionsSorter to sort transactions
+    // It defines which transactions is oldest comparing first the year, then month and day if necessary
+    
     public boolean isOlder(Transaction t2){
         int y1 = Integer.parseInt(this.getYear());
         int y2 = Integer.parseInt(t2.getYear());

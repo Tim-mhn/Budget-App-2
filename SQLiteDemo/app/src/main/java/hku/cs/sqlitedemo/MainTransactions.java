@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -78,7 +79,7 @@ public class MainTransactions extends AppCompatActivity {
         }
 
         class SpotViewHolder extends RecyclerView.ViewHolder {
-            //ImageView ivSpot;
+            ImageView ivCategory;
             TextView tvAmount, tvCategory, tvDescription, tvDate;
 
             SpotViewHolder(View itemView) {
@@ -87,6 +88,7 @@ public class MainTransactions extends AppCompatActivity {
                 tvCategory = (TextView) itemView.findViewById(R.id.tvCategory);
                 tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
                 tvDate = (TextView) itemView.findViewById(R.id.tvDate);
+                ivCategory = (ImageView) itemView.findViewById(R.id.ivCategory);
 
             }
         }
@@ -109,10 +111,17 @@ public class MainTransactions extends AppCompatActivity {
 
             // We have to implement the R string currency !
             holder.tvAmount.setText("$" + transaction.getAmount());
-            //holder.tvAmount.append(R.string.currency);
             holder.tvCategory.setText(transaction.getCategory());
             holder.tvDescription.setText(transaction.getDescription());
             holder.tvDate.setText(transaction.getDate());
+            if(transaction.getType().equalsIgnoreCase("expense")){
+                holder.tvAmount.setTextColor(Color.RED);
+            } else {
+                holder.tvAmount.setTextColor(Color.GREEN);
+            }
+            String imageName = Category.getImageName(transaction.getCategory());
+            int imageSrc = context.getResources().getIdentifier("drawable/"+imageName,null,context.getPackageName());
+            holder.ivCategory.setImageResource(imageSrc);
 
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
