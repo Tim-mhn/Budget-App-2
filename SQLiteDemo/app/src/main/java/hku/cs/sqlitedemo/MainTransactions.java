@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.triggertrap.seekarc.SeekArc;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -23,6 +25,8 @@ public class MainTransactions extends AppCompatActivity {
     private TransactionsDatabase sqliteHelper;
     private TransactionsAdapter transactionsAdapter;
     private RecyclerView rvSpots;
+    private SeekArc seekArc;
+    private TextView progressPerentage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,11 @@ public class MainTransactions extends AppCompatActivity {
         }
         rvSpots = (RecyclerView) findViewById(R.id.rvSpots);
         rvSpots.setLayoutManager(new LinearLayoutManager(this));
+
+        progressPerentage = (TextView) findViewById(R.id.txtProgress);
+        seekArc = (SeekArc) findViewById(R.id.seekArc);
+        seekArc.setEnabled(false);
+        progressPerentage.setText(String.valueOf(seekArc.getProgress()).concat("%"));
     }
 
     @Override
@@ -65,8 +74,8 @@ public class MainTransactions extends AppCompatActivity {
     }
 
     public void onProgressBarClick(View view) {
-        Intent intent = new Intent(this, NewTransaction.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, NewTransaction.class);
+        //startActivity(intent);
     }
 
     private class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapter.SpotViewHolder> {
