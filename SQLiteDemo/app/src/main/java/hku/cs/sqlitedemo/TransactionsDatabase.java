@@ -54,10 +54,6 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
                 null);
 
 
-//        String sql = "SELECT * FROM Transactions;";
-//        String[] args = {};
-//        Cursor cursor = db.rawQuery(sql, args);
-
         List<Transaction> transactionList = new ArrayList<>();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -70,7 +66,12 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
             transactionList.add(t);
         }
         cursor.close();
-        return transactionList;
+
+        // Part where we create a sorter instance and sort the list from newest to oldest
+
+        TransactionsSorter sorter = new TransactionsSorter();
+        List<Transaction> sortedTransactionList = sorter.mergeSort(transactionList);
+        return sortedTransactionList;
     }
 
     public Transaction findById(int id) {

@@ -17,29 +17,17 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
+
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import java.util.Calendar;
+
 
 public class UpdateObjectives extends AppCompatActivity{
 
@@ -50,12 +38,24 @@ public class UpdateObjectives extends AppCompatActivity{
     private TextView tvBalance;
     private TextView tvMonth;
 
+    // firstSet is true if it's the first time that we set our objective.
+    // In that case we will insert a row in the DB insert of updating the (single) row
+
+    private boolean firstSet = false;
+
+    private ObjectivesDatabase objDb;
+    private static final int DATE_DIALOG_ID = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_objectives);
+        if (objDb == null) {
+            objDb = new ObjectivesDatabase(this);
+        }
         findViews();
         addTextChangeListeners();
+        updateBalanceView();
     }
 
     private void findViews() {
@@ -64,8 +64,18 @@ public class UpdateObjectives extends AppCompatActivity{
         tvBalance = (TextView) findViewById(R.id.tvBalance);
         tvMonth = (TextView) findViewById(R.id.tvMonth);
 
-        tvBalance.setText("0");
+        MonthObjective mO = objDb.getCurrentObjectives(); // check that line
+        if (mO == null) {
+            Toast.makeText(this, R.string.msg_NoDataFound,
+                    Toast.LENGTH_SHORT).show();
+            firstSet = true; // if there is no data in the DB, we will have to insert a row and not update it
+            return;
+        }
 
+        income = mO.getIncome();
+        expense = mO.getExpense();
+        etExpense.setText(String.valueOf(expense));
+        etIncome.setText(String.valueOf(income));
         Calendar c = Calendar.getInstance();
         int monthInt = c.get(Calendar.MONTH);
         String month = getMonthForInt(monthInt);
@@ -108,9 +118,11 @@ public class UpdateObjectives extends AppCompatActivity{
         if(!amountStr.equals("")){
             amount = Double.parseDouble(amountStr);
         }
+        Double currentBalance = 0.;
+        if(!tvBalance.getText().toString().equals("")){
+            currentBalance = Double.parseDouble(tvBalance.getText().toString());
+        }
 
-
-        double currentBalance = Double.parseDouble(tvBalance.getText().toString());
         double newAmount = currentBalance;
         if(transactionType){
             newAmount = newAmount - income + amount;
@@ -124,9 +136,32 @@ public class UpdateObjectives extends AppCompatActivity{
         tvBalance.setText(Double.toString(newAmount));
     }
 
+    private void updateBalanceView(){
+        double balance = income-expense;
+        tvBalance.setText(Double.toString(balance));
+    }
+
     private void addTextChangeListeners(){
 
         addOneTextChangeListener(etExpense,false);
         addOneTextChangeListener(etIncome,true);
+    }
+
+    public void backToMainActivity(View view){
+        Intent i = new Intent(this,MainTransactions.class);
+        startActivity(i);
+    }
+
+    public void onSetObjectives(View view){
+        long count;
+        if(firstSet){
+            count = objDb.insert(new MonthObjective(income, expense));
+        } else {
+          count = objDb.update(new MonthObjective(income, expense));
+        }
+
+        Toast.makeText(this, count + " " + getString(R.string.msg_RowUpdated),
+                Toast.LENGTH_SHORT).show();
+        backToMainActivity(view);
     }
 }

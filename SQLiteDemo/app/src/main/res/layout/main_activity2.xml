@@ -33,6 +33,16 @@
         android:orientation="vertical">
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/setObjBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="12dp"
+            android:onClick="onSetObjClick"
+            android:src="@drawable/warning"
+            app:elevation="6dp"
+            app:rippleColor="#FFFFFF" />
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

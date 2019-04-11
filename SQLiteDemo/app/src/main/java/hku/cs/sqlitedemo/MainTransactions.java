@@ -66,15 +66,15 @@ public class MainTransactions extends AppCompatActivity {
 
     private class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapter.SpotViewHolder> {
         Context context;
-        List<Transaction> spotList;
+        List<Transaction> transactionList;
 
-        void setSpotList(List<Transaction> spotList) {
-            this.spotList = spotList;
+        void setSpotList(List<Transaction> transactionList) {
+            this.transactionList = transactionList;
         }
 
-        TransactionsAdapter(Context context, List<Transaction> spotList) {
+        TransactionsAdapter(Context context, List<Transaction> transactionList) {
             this.context = context;
-            this.spotList = spotList;
+            this.transactionList = transactionList;
         }
 
         class SpotViewHolder extends RecyclerView.ViewHolder {
@@ -93,7 +93,7 @@ public class MainTransactions extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return spotList.size();
+            return transactionList.size();
         }
 
         @Override
@@ -105,7 +105,7 @@ public class MainTransactions extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(SpotViewHolder holder, int position) {
-            final Transaction transaction = spotList.get(position);
+            final Transaction transaction = transactionList.get(position);
 
             // We have to implement the R string currency !
             holder.tvAmount.setText("$" + transaction.getAmount());
@@ -132,7 +132,7 @@ public class MainTransactions extends AppCompatActivity {
                     int count = sqliteHelper.deleteById(transaction.getId());
                     Toast.makeText(context, count + " " + getString(R.string.msg_RowDeleted),
                             Toast.LENGTH_SHORT).show();
-                    spotList = sqliteHelper.getAllSpots();
+                    transactionList = sqliteHelper.getAllSpots();
                     notifyDataSetChanged();
                     return true;
                 }
@@ -140,6 +140,10 @@ public class MainTransactions extends AppCompatActivity {
         }
     }
 
+    public void onSetObjClick(View v){
+        Intent i = new Intent(this,UpdateObjectives.class);
+        startActivity(i);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

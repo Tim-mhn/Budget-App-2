@@ -30,6 +30,7 @@
     <string name="objectives">Objectives</string>
     <string name="update_transaction">Update Transaction</string>
     <string name="balance">Balance</string>
+    <string name="set">Set</string>
     <string name="budget_objectives">Budget Objectives</string>
     <string name="expense">Expense</string>
     <string name="income">Income</string>

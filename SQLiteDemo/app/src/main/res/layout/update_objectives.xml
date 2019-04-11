@@ -22,15 +22,23 @@
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="6dp">
 
+            <ImageView
+                android:id="@+id/ivBackArrow"
+                android:layout_centerVertical="true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/back_arrow"
+                android:onClick="backToMainActivity"/>
+
             <TextView
                 android:text="@string/budget_objectives"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/tvBudgetTransactions"
-                android:layout_weight="1"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:paddingLeft="50sp"
+                android:paddingStart="50sp"
+                android:paddingEnd="50sp"
                 android:textAlignment="center"
                 android:paddingBottom="3sp"/>
         </LinearLayout>
@@ -44,17 +52,17 @@
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="6dp">
 
+
             <TextView
-                android:text=""
-                android:layout_width="match_parent"
+                android:text="April"
+                android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:id="@+id/tvMonth"
-                android:layout_weight="1"
                 android:textSize="30sp"
-                android:paddingLeft="140sp"
                 android:textStyle=""
                 android:textAlignment="center"
                 android:paddingBottom="3sp"/>
+
         </LinearLayout>
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -166,6 +174,24 @@
                 android:paddingBottom="3sp"
                 android:textSize="30sp"
                 android:textStyle=""/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp">
+
+            <Button
+                android:text="@string/set"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSetObjectives"
+                android:id="@+id/setObjectiveButton"
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 

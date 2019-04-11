@@ -9,18 +9,20 @@
         android:theme="@style/AppTheme">
 
 
+
+
         <activity
-            android:name="hku.cs.sqlitedemo.UpdateObjectives"
-            android:label="@string/text_Update">
+            android:name="hku.cs.sqlitedemo.MainTransactions"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <activity
-            android:name="hku.cs.sqlitedemo.MainTransactions"
-            android:label="@string/app_name">
+            android:name="hku.cs.sqlitedemo.UpdateObjectives"
+            android:label="@string/text_Update">
 
         </activity>
 

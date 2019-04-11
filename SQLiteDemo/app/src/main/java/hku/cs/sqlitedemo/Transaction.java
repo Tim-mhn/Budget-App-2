@@ -99,4 +99,34 @@ public class Transaction {
     public String getYear(){
         return this.getDateElements()[2];
     }
+
+    public boolean isOlder(Transaction t2){
+        int y1 = Integer.parseInt(this.getYear());
+        int y2 = Integer.parseInt(t2.getYear());
+        if(y1<y2){
+            return true;
+        }
+        else if (y1>y2){
+            return false;
+        } else {
+            int m1 = this.getMonthInt();
+            int m2 = t2.getMonthInt();
+
+            if(m1<m2){
+                return true;
+            }
+            else if (m1>m2){
+                return false;
+            } else {
+                int d1 = Integer.parseInt(this.getDay());
+                int d2 = Integer.parseInt(t2.getDay());
+
+                if(d1<d2){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
 }
