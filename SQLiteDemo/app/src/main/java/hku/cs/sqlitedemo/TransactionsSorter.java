@@ -5,12 +5,15 @@ import java.util.List;
 
 public class TransactionsSorter {
 
-    // class to sort transactions from newest to oldest
+    // Class to sort transactions from newest to oldest
     // In the MainTransactions Vue, we use this sorter to display the newest transactions first
+    // To do as such, we create an instance of TransactionsSorter and use the mergeSort method implemented in this call
 
 
     public TransactionsSorter() {
     }
+
+    // We sort transactions by using a merge sort
 
     public List<Transaction> mergeSort(List<Transaction> transactions){
         int n = transactions.size();

@@ -74,6 +74,21 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
         return sortedTransactionList;
     }
 
+    public List<Transaction> getTransactions(String type){
+        if(type.equalsIgnoreCase("all")){
+            return getAllSpots();
+        } else {
+            List<Transaction> allTransactions = getAllSpots();
+            List<Transaction> filteredList = new ArrayList<>();
+            for(Transaction t : allTransactions){
+                if (t.getType().equalsIgnoreCase(type)){
+                    filteredList.add(t);
+                }
+            }
+            return filteredList;
+        }
+    }
+
     public Transaction findById(int id) {
         SQLiteDatabase db = getWritableDatabase();
         String[] columns = {

@@ -27,20 +27,21 @@
                 android:layout_centerVertical="true"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
+                android:paddingTop="5dp"
                 android:src="@drawable/back_arrow"
                 android:onClick="backToMainActivity"/>
 
             <TextView
-                android:text="@string/budget_objectives"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
                 android:id="@+id/tvBudgetTransactions"
-                android:textSize="30sp"
-                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
                 android:paddingStart="50sp"
                 android:paddingEnd="50sp"
+                android:paddingBottom="3sp"
+                android:text="@string/budget_objectives"
                 android:textAlignment="center"
-                android:paddingBottom="3sp"/>
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,12 +56,13 @@
 
             <TextView
                 android:text="April"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/tvMonth"
                 android:textSize="30sp"
                 android:textStyle=""
                 android:textAlignment="center"
+                android:paddingStart="150dp"
                 android:paddingBottom="3sp"/>
 
         </LinearLayout>

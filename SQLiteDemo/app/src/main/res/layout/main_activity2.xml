@@ -12,12 +12,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/title_transactions"
-            android:textSize="25sp" />
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/filterSpinner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/title_transactions"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvSpots"
@@ -32,16 +46,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/setObjBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="12dp"
-            android:onClick="onSetObjClick"
-            android:src="@drawable/warning"
-            app:elevation="6dp"
-            app:rippleColor="#FFFFFF" />
+
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
