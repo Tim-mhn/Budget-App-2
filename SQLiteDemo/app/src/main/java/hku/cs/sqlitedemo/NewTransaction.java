@@ -243,12 +243,6 @@ public class NewTransaction extends AppCompatActivity {
 
         Transaction transaction = new Transaction(amount, description, type, category, date, year, month, day);
 
-        // We set the date with the int attributes (a bit redundant but it allows to easily setup the calendar display
-        // In the updateActivity class view
-
-        /*transaction.setDay(day);
-        transaction.setMonth(month);
-        transaction.setYear(year);*/
 
         long rowId = sqliteHelper.insert(transaction);
         if (rowId != -1) {

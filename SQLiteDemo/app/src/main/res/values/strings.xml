@@ -27,7 +27,13 @@
     <string name="description">Description</string>
     <string name="currency">$</string>
     <string name="update">Update</string>
-    <string name="text_tvTotalExpenses">Expenses this month</string>
+    <string name="objectives">Objectives</string>
+    <string name="update_transaction">Update Transaction</string>
+    <string name="balance">Balance</string>
+    <string name="set">Set</string>
+    <string name="budget_objectives">Budget Objectives</string>
+    <string name="expense">Expense</string>
+    <string name="income">Income</string>
 
     <string name="msg_InsertSuccess">Insert successfully</string>
     <string name="msg_InsertFail">Insert fail</string>

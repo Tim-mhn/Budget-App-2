@@ -19,12 +19,20 @@
         </activity>
 
         <activity
+            android:name="hku.cs.sqlitedemo.UpdateObjectives"
+            android:label="@string/text_Update">
+
+        </activity>
+
+        <activity
             android:name="hku.cs.sqlitedemo.NewTransaction"
             android:label="@string/text_Insert" />
 
         <activity
             android:name="hku.cs.sqlitedemo.UpdateActivity"
-            android:label="@string/text_Update" />
+            android:label="@string/objectives" />
+
+
     </application>
 
 </manifest>

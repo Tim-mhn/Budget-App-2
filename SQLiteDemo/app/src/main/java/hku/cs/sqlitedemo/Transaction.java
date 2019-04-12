@@ -8,9 +8,6 @@ public class Transaction {
     private String category;
     private String date;
 
-    private int year;
-    private int month;
-    private int day;
 
 
     public Transaction(String amount, String description, String type, String category, String date) {
@@ -26,16 +23,6 @@ public class Transaction {
         this.date = date;
     }
 
-    public Transaction(String amount, String description, String type, String category, String date, int year, int month, int day) {
-        this.amount = amount;
-        this.description = description;
-        this.type = type;
-        this.category = category;
-        this.date = date;
-        this.year = year;
-        this.month = month;
-        this.day = day;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -85,27 +72,64 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getYear() {
-        return year;
+    public String[] getDateElements(){
+        return this.date.split("[, ]+");
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public String getDay(){
+        return this.getDateElements()[1];
     }
 
-    public int getMonth() {
-        return month;
+    public String getMonth(){
+        return this.getDateElements()[0];
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public int getMonthInt(){
+        String month = this.getMonth();
+        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+        int i = 0; // Month number
+        while(!months[i].equals(month)){
+            i++;
+        }
+        return i;
+
     }
 
-    public int getDay() {
-        return day;
+    public String getYear(){
+        return this.getDateElements()[2];
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    // Method used by the TransactionsSorter to sort transactions
+    // It defines which transactions is oldest comparing first the year, then month and day if necessary
+    
+    public boolean isOlder(Transaction t2){
+        int y1 = Integer.parseInt(this.getYear());
+        int y2 = Integer.parseInt(t2.getYear());
+        if(y1<y2){
+            return true;
+        }
+        else if (y1>y2){
+            return false;
+        } else {
+            int m1 = this.getMonthInt();
+            int m2 = t2.getMonthInt();
+
+            if(m1<m2){
+                return true;
+            }
+            else if (m1>m2){
+                return false;
+            } else {
+                int d1 = Integer.parseInt(this.getDay());
+                int d2 = Integer.parseInt(t2.getDay());
+
+                if(d1<d2){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
     }
 }

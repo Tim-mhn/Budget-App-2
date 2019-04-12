@@ -54,11 +54,7 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
                 null);
 
 
-//        String sql = "SELECT * FROM Transactions;";
-//        String[] args = {};
-//        Cursor cursor = db.rawQuery(sql, args);
-
-        List<Transaction> spotList = new ArrayList<>();
+        List<Transaction> transactionList = new ArrayList<>();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String amount = cursor.getString(1);
@@ -67,10 +63,30 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
             String category = cursor.getString(4);
             String date = cursor.getString(5);
             Transaction t = new Transaction(id, amount, description, type, category, date);
-            spotList.add(t);
+            transactionList.add(t);
         }
         cursor.close();
-        return spotList;
+
+        // Part where we create a sorter instance and sort the list from newest to oldest
+
+        TransactionsSorter sorter = new TransactionsSorter();
+        List<Transaction> sortedTransactionList = sorter.mergeSort(transactionList);
+        return sortedTransactionList;
+    }
+
+    public List<Transaction> getTransactions(String type){
+        if(type.equalsIgnoreCase("all")){
+            return getAllSpots();
+        } else {
+            List<Transaction> allTransactions = getAllSpots();
+            List<Transaction> filteredList = new ArrayList<>();
+            for(Transaction t : allTransactions){
+                if (t.getType().equalsIgnoreCase(type)){
+                    filteredList.add(t);
+                }
+            }
+            return filteredList;
+        }
     }
 
     public Transaction findById(int id) {
@@ -103,7 +119,6 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
         values.put(COL_type, t.getType());
         values.put(COL_category, t.getCategory());
         values.put(COL_date, t.getDate());
-        //values.put(COL_amount, t.getAmount());
         return db.insert(TABLE_NAME, null, values);
     }
 
