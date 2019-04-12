@@ -225,8 +225,6 @@ public class NewTransaction extends AppCompatActivity {
         String description = etDescription.getText().toString().trim();
 
         int radioButtonID = rgType.getCheckedRadioButtonId();
-        RadioButton rbType = (RadioButton) rgType.findViewById(radioButtonID);
-        String type = rbType.getText().toString().trim();
 
         String amount = etAmount.getText().toString().trim();
 
@@ -234,6 +232,14 @@ public class NewTransaction extends AppCompatActivity {
         String date = tvDate.getText().toString().trim();
 
         String category = spinCategory.getItemAtPosition(spinCategory.getSelectedItemPosition()).toString().trim();
+
+        if (radioButtonID == -1 || amount.matches("") || date.matches("") || category.equals("Select category...")) {
+            Toast.makeText(this, "Please complete all the fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        RadioButton rbType = (RadioButton) rgType.findViewById(radioButtonID);
+        String type = rbType.getText().toString().trim();
 
         Transaction transaction = new Transaction(amount, description, type, category, date);
 

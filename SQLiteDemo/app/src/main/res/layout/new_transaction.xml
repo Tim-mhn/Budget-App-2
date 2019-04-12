@@ -1,195 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardBackgroundColor="@color/cardview_light_background"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="37dp">
-            <TextView
-                android:text="@string/new_transaction"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvNewTransaction"
-                android:layout_weight="1"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:paddingBottom="3sp"/>
-        </LinearLayout>
-
-
-
-        <TextView
-            android:text="Type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvType"/>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <RadioGroup
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:id="@+id/rgType"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:text="Expense"
+                android:layout_height="37dp">
+                <TextView
+                    android:text="@string/new_transaction"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/rbExpense"
+                    android:id="@+id/tvNewTransaction"
                     android:layout_weight="1"
-                    android:textSize="14sp"/>
-                <RadioButton
-                    android:text="Income"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rbIncome"
-                    android:layout_weight="1"
-                    android:textSize="14sp"/>
-            </RadioGroup>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
-
-        <TextView
-            android:text="Amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvAmount"/>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-
-            <EditText
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/etAmount"
-                android:layout_weight="2"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"/>
-
-        </LinearLayout>
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:paddingBottom="3sp"/>
+            </LinearLayout>
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:text="Date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvDate0"/>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
             <TextView
-                android:layout_width="0px"
-                android:id="@+id/tvDate"
-                android:layout_weight="2"
-                android:layout_height="match_parent"
-                android:textSize="14sp"
-                android:textAlignment="viewStart"/>
-        </LinearLayout>
+                android:text="Type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvType"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <RadioGroup
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:id="@+id/rgType"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:text="Expense"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/rbExpense"
+                        android:layout_weight="1"
+                        android:textSize="14sp"/>
+                    <RadioButton
+                        android:text="Income"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/rbIncome"
+                        android:layout_weight="1"
+                        android:textSize="14sp"/>
+                </RadioGroup>
+            </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:text="@string/category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvCategory"/>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/spinCategory"
-                android:layout_weight="2"
-                android:gravity="center_vertical"
-                android:prompt="@string/category"/>
-        </LinearLayout>
+            <TextView
+                android:text="Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAmount"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+                <EditText
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/etAmount"
+                    android:layout_weight="2"
+                    android:textAlignment="viewStart"
+                    android:textSize="14sp"/>
 
-        <TextView
-            android:text="@string/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/tvDescription"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="76dp">
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:singleLine="false"
-                android:inputType="textCapSentences|textMultiLine"
-                android:maxLength="150"
-                android:scrollHorizontally="false"
-                android:isScrollContainer="true"
-                android:maxLines="4"
-                android:ems="10"
-                android:id="@+id/etDescription"
-                android:layout_weight="1"
-                android:textSize="14sp"/>
-        </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <Button
-                android:text="@android:string/cancel"
+            <TextView
+                android:text="Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDate0"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <TextView
+                    android:layout_width="0px"
+                    android:id="@+id/tvDate"
+                    android:layout_weight="2"
+                    android:layout_height="match_parent"
+                    android:textSize="14sp"
+                    android:textAlignment="viewStart"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:text="@string/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCategory"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/spinCategory"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:prompt="@string/category"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:text="@string/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/tvDescription"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="76dp">
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:singleLine="false"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="150"
+                    android:scrollHorizontally="false"
+                    android:isScrollContainer="true"
+                    android:maxLines="4"
+                    android:ems="10"
+                    android:id="@+id/etDescription"
+                    android:layout_weight="1"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp">
+                <Button
+                    android:text="@android:string/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onCancelClick"
+                    android:id="@+id/cancelButton"
+                    android:layout_weight="1"/>
+                <Button
+                    android:text="@string/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onInsertClick"
+                    android:id="@+id/acceptButton"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!--<RelativeLayout
+                android:id="@+id/RelativeLayout1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onCancelClick"
-                android:id="@+id/cancelButton"
-                android:layout_weight="1"/>
-            <Button
-                android:text="@string/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onInsertClick"
-                android:id="@+id/acceptButton"
-                android:layout_weight="1"/>
+                android:layout_marginTop="3dp">
+
+                <Button
+                    android:id="@+id/btFinishInsert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@+id/btCancel"
+                    android:onClick="onInsertClick"
+                    android:text="@string/text_Insert" />
+
+                <Button
+                    android:id="@+id/btCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/btFinishInsert"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:onClick="onCancelClick"
+                    android:text="@string/text_btCancel" />
+
+            </RelativeLayout>-->
         </LinearLayout>
 
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</android.support.v7.widget.CardView>
