@@ -7,10 +7,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.ToolbarWidgetWrapper;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +50,13 @@ public class MainTransactions extends AppCompatActivity {
             sqliteHelper = new TransactionsDatabase(this);
         }
         findViews();
-        setupFilterSpinner();
+        //setupFilterSpinner();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //if (getSupportActionBar() != null) {
+          //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //}
 
     }
 
@@ -59,7 +68,7 @@ public class MainTransactions extends AppCompatActivity {
         seekArc = (SeekArc) findViewById(R.id.seekArc);
         seekArc.setEnabled(false);
         progressPerentage.setText(String.valueOf(seekArc.getProgress()).concat("%"));
-        filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
+        //filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
     }
 
     @Override
@@ -194,6 +203,7 @@ public class MainTransactions extends AppCompatActivity {
     }
 
     private void setupFilterSpinner(){
+
 
         // Initializing a String Array
         String[] types = new String[]{
