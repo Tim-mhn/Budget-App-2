@@ -241,7 +241,7 @@ public class NewTransaction extends AppCompatActivity {
         RadioButton rbType = (RadioButton) rgType.findViewById(radioButtonID);
         String type = rbType.getText().toString().trim();
 
-        Transaction transaction = new Transaction(amount, description, type, category, date, year, month, day);
+        Transaction transaction = new Transaction(amount, description, type, category, date);
 
 
         long rowId = sqliteHelper.insert(transaction);
