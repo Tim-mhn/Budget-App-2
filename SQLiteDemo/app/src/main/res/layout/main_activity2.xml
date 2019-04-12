@@ -25,7 +25,13 @@
             android:layout_height="120dp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onProgressBarClick">
+            android:onClick="onProgressBarClick"
+            android:background="@color/White">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/LightGrey"/>
 
             <TextView
                 android:id="@+id/txtProgress"
@@ -73,8 +79,12 @@
                 android:textSize="12sp"
                 android:text="@string/text_currentProgress"/>
 
-
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/LightGrey"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvSpots"
