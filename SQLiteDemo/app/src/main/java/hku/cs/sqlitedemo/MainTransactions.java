@@ -63,6 +63,7 @@ public class MainTransactions extends AppCompatActivity {
         progressPerentage = (TextView) findViewById(R.id.txtProgress);
         seekArc = (SeekArc) findViewById(R.id.seekArc);
         seekArc.setEnabled(false);
+
         progressPerentage.setText(String.valueOf(seekArc.getProgress()).concat("%"));
         filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
     }
@@ -260,7 +261,24 @@ public class MainTransactions extends AppCompatActivity {
     public void updateProgressBar(){
         int percentage = getExpensePercentage();
         seekArc.setProgress(percentage);
+        setProgressBarColor(percentage);
         progressPerentage.setText(String.valueOf(percentage).concat("%"));
+    }
+
+    public void setProgressBarColor(int percentage){
+        int colorId;
+        if(percentage<20){
+            colorId = getResources().getColor(R.color.LightSkyBlue);
+        } else if (percentage<50){
+            colorId = getResources().getColor(R.color.Lime);
+        } else if (percentage<80) {
+            colorId = getResources().getColor(R.color.DarkOrange);
+        } else if (percentage < 100) {
+            colorId = getResources().getColor(R.color.Tomato);
+        } else {
+            colorId = getResources().getColor(R.color.DarkRed);
+        }
+        seekArc.setProgressColor(colorId);
     }
 
     // getMonthAmount("expense") will return the current month total expenses
