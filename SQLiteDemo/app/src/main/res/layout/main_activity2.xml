@@ -15,19 +15,20 @@
         android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:fitsSystemWindows="true"
-            android:background="@color/White">
+            android:layout_height="wrap_content"
+            android:background="@color/White"
+            android:fitsSystemWindows="true">
 
             <hku.cs.sqlitedemo.CollapsingImageLayout
-                android:layout_width="wrap_content"
-                android:layout_height="250dp"
-                android:minHeight="100dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
+                android:minHeight="100dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <!--
+                <!--
             <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,14 +40,26 @@
                 <RelativeLayout
                     android:id="@+id/relativeLayout"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:background="@color/White"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="onProgressBarClick"
-                    android:background="@color/White"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.9"
-                    android:scaleType="centerCrop">
+                    app:layout_collapseMode="parallax">
+
+                    <TextView
+                        android:id="@+id/txtCurrentPrgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtProgress"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="@string/text_currentProgress"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/txtProgress"
@@ -54,14 +67,16 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
                         android:textColor="#000000"
-                        android:textSize="24sp" />
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
 
                     <com.triggertrap.seekarc.SeekArc
                         android:id="@+id/seekArc"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="25dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:padding="3dp"
                         seekarc:arcWidth="2dp"
                         seekarc:progress="50"
                         seekarc:rotation="270"
@@ -69,27 +84,69 @@
                         seekarc:sweepAngle="270"
                         seekarc:touchInside="false" />
 
-                    <TextView
-                        android:id="@+id/txtCurrentPrgress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/txtProgress"
-                        android:layout_centerHorizontal="true"
-                        android:background="@android:color/transparent"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:text="@string/text_currentProgress"/>
-
                 </RelativeLayout>
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_width="match_parent"
-                app:popupTheme="@style/CardView.Dark"
-                app:layout_collapseMode="pin" />
+                <TextView
+                    android:id="@+id/txtIncomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="INCOMES"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_collapseMode="pin" />
 
-            <!--
+                <TextView
+                    android:id="@+id/intIncomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="$578"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Green"
+                    app:layout_collapseMode="pin" />
+
+                <TextView
+                    android:id="@+id/txtOutcomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="OUTCOMES"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_collapseMode="pin" />
+
+                <TextView
+                    android:id="@+id/intOutcomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="$451"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Red"
+                    app:layout_collapseMode="pin" />
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/CardView.Dark" />
+
+                <!--
             </android.support.design.widget.CollapsingToolbarLayout>
             -->
             </hku.cs.sqlitedemo.CollapsingImageLayout>
