@@ -40,7 +40,7 @@
                 android:paddingBottom="3sp"
                 android:text="@string/budget_objectives"
                 android:textAlignment="center"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
