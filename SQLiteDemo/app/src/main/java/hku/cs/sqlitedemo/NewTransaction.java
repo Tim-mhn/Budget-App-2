@@ -88,17 +88,16 @@ public class NewTransaction extends AppCompatActivity {
 
     private void setupCategoriesSpinner(){
 
-        // Initializing a String Array
-        String[] categories = new String[]{
-                "New category",
-                "Nightlife",
-                "Dinner",
-                "Housing",
-                "Health",
-                "Select category..."
-        };
 
-        final List<String> categoriesList = new ArrayList<>(Arrays.asList(categories));
+        // Instead of creating the category string list here, we fetch the data from the class Category
+        // We just need to add the hint 'Select category' and the other option 'New Category' to the list
+        List<Category> categories = Category.getCategories();
+        final List<String> categoriesList = new ArrayList<>();
+        categoriesList.add("New category");
+        for(Category c : categories){
+            categoriesList.add(c.getName());
+        }
+        categoriesList.add("Select category...");
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoriesList) {
 

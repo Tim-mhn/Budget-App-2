@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SQLiteDemo</string>
+    <string name="app_name">MoneyGoals</string>
     <string name="text_tvRowCount">(row number/ total rows)</string>
     <string name="text_Insert">Insert</string>
     <string name="text_Query">Query</string>
