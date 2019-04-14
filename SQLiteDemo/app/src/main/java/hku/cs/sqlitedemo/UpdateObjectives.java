@@ -65,7 +65,7 @@ public class UpdateObjectives extends AppCompatActivity{
         tvMonth = (TextView) findViewById(R.id.tvMonth);
 
         MonthObjective mO = objDb.getCurrentObjectives(); // check that line
-        if (mO == null) {
+        if (mO.getIncome() == 0 && mO.getExpense() == 0) {
             Toast.makeText(this, R.string.msg_NoDataFound,
                     Toast.LENGTH_SHORT).show();
             firstSet = true; // if there is no data in the DB, we will have to insert a row and not update it

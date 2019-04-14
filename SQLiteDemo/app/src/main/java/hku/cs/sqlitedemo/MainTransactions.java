@@ -29,11 +29,13 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class MainTransactions extends AppCompatActivity {
     private TransactionsDatabase sqliteHelper;
     private TransactionsAdapter transactionsAdapter;
+    private ObjectivesDatabase objDb;
     private RecyclerView rvSpots;
     private SeekArc seekArc;
     private TextView progressPerentage;
@@ -46,8 +48,11 @@ public class MainTransactions extends AppCompatActivity {
         if (sqliteHelper == null) {
             sqliteHelper = new TransactionsDatabase(this);
         }
+        if (objDb == null){
+            objDb = new ObjectivesDatabase(this);
+        }
         findViews();
-        setupFilterSpinner();
+
 
     }
 
@@ -58,6 +63,7 @@ public class MainTransactions extends AppCompatActivity {
         progressPerentage = (TextView) findViewById(R.id.txtProgress);
         seekArc = (SeekArc) findViewById(R.id.seekArc);
         seekArc.setEnabled(false);
+
         progressPerentage.setText(String.valueOf(seekArc.getProgress()).concat("%"));
         filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
     }
@@ -65,7 +71,6 @@ public class MainTransactions extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // List<Transaction> transactionList = getSpotList();
         List<Transaction> transactionList = getTransactionsList("all");
         if (transactionList.size() <= 0) {
             Toast.makeText(
@@ -80,11 +85,11 @@ public class MainTransactions extends AppCompatActivity {
             transactionsAdapter.setSpotList(transactionList);
             transactionsAdapter.notifyDataSetChanged();
         }
+        setupFilterSpinner();
+        updateProgressBar();
 
-    }
 
-    public List<Transaction> getSpotList() {
-        return sqliteHelper.getAllSpots();
+
     }
 
     public List<Transaction> getTransactionsList(String type){
@@ -98,10 +103,6 @@ public class MainTransactions extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onProgressBarClick(View view) {
-        //Intent intent = new Intent(this, NewTransaction.class);
-        //startActivity(intent);
-    }
 
     private class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapter.SpotViewHolder> {
         Context context;
@@ -181,6 +182,7 @@ public class MainTransactions extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     transactionList = sqliteHelper.getAllSpots();
                     notifyDataSetChanged();
+                    updateProgressBar();
                     return true;
                 }
             });
@@ -244,13 +246,89 @@ public class MainTransactions extends AppCompatActivity {
             }
         });
     }
+
+    public void onDetailClick(View v){
+        Intent i = new Intent(this, MonthPieCharts.class);
+        startActivity(i);
+    }
     // Click on the image to update the monthly objectives
     // Opens a new view to set the user's income / expense month objectives
 
-    public void onSetObjClick(View v){
+    public void onProgressBarClick(View v){
         Intent i = new Intent(this,UpdateObjectives.class);
         startActivity(i);
     }
+
+    // List of methods used to set and update the progress bar
+    // We fetch the data from the transactions DB and objectives DB
+    // We get the total amount of expenses & income of transactions of the current month
+
+    public void updateProgressBar(){
+        int percentage = getExpensePercentage();
+        seekArc.setProgress(percentage);
+        setProgressBarColor(percentage);
+        progressPerentage.setText(String.valueOf(percentage).concat("%"));
+    }
+
+    public void setProgressBarColor(int percentage){
+        int colorId;
+        if(percentage<20){
+            colorId = getResources().getColor(R.color.LightSkyBlue);
+        } else if (percentage<50){
+            colorId = getResources().getColor(R.color.Lime);
+        } else if (percentage<80) {
+            colorId = getResources().getColor(R.color.DarkOrange);
+        } else if (percentage < 100) {
+            colorId = getResources().getColor(R.color.Tomato);
+        } else {
+            colorId = getResources().getColor(R.color.DarkRed);
+        }
+        seekArc.setProgressColor(colorId);
+    }
+
+    // getMonthAmount("expense") will return the current month total expenses
+    // getMonthTotal("income") will return the current month total income
+    public double getMonthTotal(String transactionType){
+        List<Transaction> transactions = getTransactionsList(transactionType);
+        double amount = 0;
+        int currentYear = 2019;
+        int currentMonth = Calendar.MONTH + 1;
+        for(Transaction t : transactions){
+            if(t.getMonthInt() == currentMonth && Integer.parseInt(t.getYear()) == currentYear){
+                amount += Double.parseDouble(t.getAmount());
+            }
+        }
+        return amount;
+    }
+
+
+    public double getMonthIncomeObj(){
+        MonthObjective mO = objDb.getCurrentObjectives();
+        return mO.getIncome();
+    }
+
+    public double getMonthExpenseObj(){
+        MonthObjective mO = objDb.getCurrentObjectives();
+        return mO.getExpense();
+    }
+
+    public int getIncomePercentage(){
+        double current = getMonthTotal("income");
+        double objective = getMonthIncomeObj();
+        double result = 100*current/objective;
+        int percentage = (int) result;
+        return percentage;
+    }
+
+    public int getExpensePercentage(){
+        double current = getMonthTotal("expense");
+        double objective = getMonthExpenseObj();
+        double result = 100*current/objective;
+        int percentage = (int) result;
+        //int percentage = (int) current;
+        return percentage;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

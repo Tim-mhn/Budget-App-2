@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="hku.cs.sqlitedemo.MonthPieCharts"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="top|center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ProgressBar android:id="@+id/progressBar"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:indeterminate="false"
+    android:max="100"
+    android:progress="75"
+    android:progressDrawable="@drawable/piechart_progress"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />
+</LinearLayout>

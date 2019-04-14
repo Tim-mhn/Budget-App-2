@@ -73,7 +73,7 @@ public class ObjectivesDatabase extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_NAME, columns, null, null, null, null,
                 null);
 
-        MonthObjective mO = null;
+        MonthObjective mO = new MonthObjective(0,0);
         if(cursor.moveToNext()){
             double incomeObj = cursor.getDouble(1);
             double expenseObj = cursor.getDouble(2);
@@ -84,24 +84,6 @@ public class ObjectivesDatabase extends SQLiteOpenHelper {
         return mO;
     }
 
-    /*public MonthObjective findMonthObjective(String monthYear) {
-        SQLiteDatabase db = getWritableDatabase();
-        String[] columns = {
-                COL_monthYear, COL_income, COL_expense
-        };
-        String selection = COL_monthYear + " = ?;";
-        String[] selectionArgs = {String.valueOf(monthYear)};
-        Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs,
-                null, null, null);
-        MonthObjective monthObj = null;
-        if (cursor.moveToNext()) {
-            double income = cursor.getDouble(0);
-            double expense = cursor.getDouble(1);
-            monthObj = new MonthObjective(monthYear, income, expense);
-        }
-        cursor.close();
-        return monthObj;
-    }*/
 
     public long insert(MonthObjective mO) {
         SQLiteDatabase db = getWritableDatabase();

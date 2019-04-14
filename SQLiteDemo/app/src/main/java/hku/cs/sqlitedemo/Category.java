@@ -51,13 +51,26 @@ public class Category {
         Category.categories.add(category);
     }
 
+    // Based on the transaction's category, we return the name of the category image
+
     public static String getImageName(String categoryTarget){
         int i = 0;
+        int size = Category.getCategories().size();
         String category = Category.getCategories().get(i).getName();
-        while(!category.equalsIgnoreCase(categoryTarget) && i<Category.getCategories().size()){
+        while(!category.equalsIgnoreCase(categoryTarget) && i<size-1){
             i++;
             category = Category.getCategories().get(i).getName();
         }
-        return Category.getCategories().get(i).getImageName();
+
+        // If we get out of the loop and the category still doesn't match the target category
+        // The transaction will have a question mark image
+        if(!category.equalsIgnoreCase(categoryTarget)){
+            return("question");
+        }
+        // In usual cases, we return the found category's image name
+        else {
+            return categories.get(i).getImageName();
+        }
+
     }
 }

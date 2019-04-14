@@ -89,6 +89,17 @@ public class TransactionsDatabase extends SQLiteOpenHelper {
         }
     }
 
+    public List<Transaction> getTransactions(String type, int month){
+        List<Transaction> allTransactions = getAllSpots();
+        List<Transaction> transactions = new ArrayList<>();
+        for(Transaction t : allTransactions){
+            if(t.getType().equalsIgnoreCase(type) && t.getMonthInt() == month){
+                transactions.add(t);
+            }
+        }
+        return transactions;
+    }
+
     public Transaction findById(int id) {
         SQLiteDatabase db = getWritableDatabase();
         String[] columns = {
