@@ -94,7 +94,7 @@ public class MainTransactions extends AppCompatActivity {
             transactionsAdapter.setSpotList(transactionList);
             transactionsAdapter.notifyDataSetChanged();
         }
-        setupFilterSpinner();
+        //setupFilterSpinner();
         updateProgressBar();
 
 
