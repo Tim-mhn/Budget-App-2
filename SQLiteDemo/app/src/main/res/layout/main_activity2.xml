@@ -114,6 +114,16 @@
         android:orientation="vertical">
 
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/monthDetailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="12dp"
+            android:onClick="onDetailClick"
+            android:src="@drawable/ic_insert"
+            app:elevation="6dp"
+            app:rippleColor="#FFFFFF" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabAdd"

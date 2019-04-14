@@ -246,6 +246,11 @@ public class MainTransactions extends AppCompatActivity {
             }
         });
     }
+
+    public void onDetailClick(View v){
+        Intent i = new Intent(this, MonthPieCharts.class);
+        startActivity(i);
+    }
     // Click on the image to update the monthly objectives
     // Opens a new view to set the user's income / expense month objectives
 
