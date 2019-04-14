@@ -28,21 +28,12 @@
                 android:minHeight="100dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <!--
-            <android.support.design.widget.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:contentScrim="@color/LightGrey"
-                android:fitsSystemWindows="true">
-                -->
-
                 <RelativeLayout
                     android:id="@+id/relativeLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:background="@color/White"
+                    android:background="@color/transparent"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="onProgressBarClick"
@@ -52,8 +43,8 @@
                         android:id="@+id/txtCurrentPrgress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txtProgress"
                         android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
                         android:background="@android:color/transparent"
                         android:fontFamily="sans-serif-condensed-light"
                         android:text="@string/text_currentProgress"
@@ -69,8 +60,7 @@
                         android:background="@android:color/transparent"
                         android:fontFamily="sans-serif-condensed-light"
                         android:textColor="#000000"
-                        android:textSize="34sp"
-                        android:textStyle="bold" />
+                        android:textSize="54sp" />
 
                     <com.triggertrap.seekarc.SeekArc
                         android:id="@+id/seekArc"
