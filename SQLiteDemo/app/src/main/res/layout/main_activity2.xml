@@ -8,133 +8,170 @@
     android:padding="8dp"
     tools:context=".MainTransactions">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/filterSpinner"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/title_transactions"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onProgressBarClick"
-            android:background="@color/White">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/LightGrey"/>
-
-            <TextView
-                android:id="@+id/txtProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@android:color/transparent"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-            <!--
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/circle_shape"
-                android:indeterminate="false"
-                android:max="100"
-                android:progress="65"
-                android:progressDrawable="@drawable/circular_progress_bar" />
-                -->
-
-            <com.triggertrap.seekarc.SeekArc
-                android:id="@+id/seekArc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="25dp"
-                android:thumb="@color/colorPrimary"
-                seekarc:arcWidth="2dp"
-                seekarc:progress="50"
-                seekarc:rotation="270"
-                seekarc:startAngle="315"
-                seekarc:sweepAngle="270"
-                seekarc:touchInside="false" />
-
-            <TextView
-                android:id="@+id/txtCurrentPrgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtProgress"
-                android:layout_centerHorizontal="true"
-                android:background="@android:color/transparent"
-                android:textColor="#000000"
-                android:textSize="12sp"
-                android:text="@string/text_currentProgress"/>
-
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/LightGrey"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvSpots"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp" />
-    </LinearLayout>
-
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/White"
+            android:fitsSystemWindows="true">
+
+            <hku.cs.sqlitedemo.CollapsingImageLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:minHeight="100dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="onProgressBarClick"
+                    app:layout_collapseMode="parallax">
+
+                    <TextView
+                        android:id="@+id/txtCurrentPrgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="@string/text_currentProgress"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textColor="#000000"
+                        android:textSize="54sp" />
+
+                    <com.triggertrap.seekarc.SeekArc
+                        android:id="@+id/seekArc"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:padding="3dp"
+                        seekarc:arcWidth="2dp"
+                        seekarc:progress="50"
+                        seekarc:rotation="270"
+                        seekarc:startAngle="315"
+                        seekarc:sweepAngle="270"
+                        seekarc:touchInside="false" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtIncomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="INCOMES"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_collapseMode="pin" />
+
+                <TextView
+                    android:id="@+id/intIncomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="$578"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Green"
+                    app:layout_collapseMode="pin" />
+
+                <TextView
+                    android:id="@+id/txtOutcomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="OUTCOMES"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_collapseMode="pin" />
+
+                <TextView
+                    android:id="@+id/intOutcomes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="$451"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/Red"
+                    app:layout_collapseMode="pin" />
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/CardView.Dark" />
+
+                <!--
+            </android.support.design.widget.CollapsingToolbarLayout>
+            -->
+            </hku.cs.sqlitedemo.CollapsingImageLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvSpots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="12dp"
+            android:onClick="onInsertClick"
+            android:src="@drawable/ic_insert"
+            app:elevation="6dp"
+            app:rippleColor="#FFFFFF" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/monthDetailBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
+            android:layout_gravity="bottom|start"
             android:layout_margin="12dp"
             android:onClick="onDetailClick"
             android:src="@drawable/ic_insert"
             app:elevation="6dp"
             app:rippleColor="#FFFFFF" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_margin="12dp"
-            android:onClick="onInsertClick"
-            android:src="@drawable/ic_insert"
-            app:elevation="6dp"
-            app:rippleColor="#FFFFFF" />
     </android.support.design.widget.CoordinatorLayout>
 
 </RelativeLayout>
