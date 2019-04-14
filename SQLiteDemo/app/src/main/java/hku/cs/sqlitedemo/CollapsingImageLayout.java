@@ -210,6 +210,16 @@ public class CollapsingImageLayout extends FrameLayout{
                     Log.d(TAG, "onOffsetChanged(), offsetting title top = " + topOffset + ", left = " + leftOffset + ", vericalOffset = " + verticalOffset);
                     Log.d(TAG, "onOffsetChanged(), offsetting title mOutcomesLeftCollapsed = " + mIncomesLeftCollapsed + ", mOutcomesLeftExpanded = " + mIncomesLeftExpanded);
                 }
+
+                if (child.getId() == R.id.txtOutcomes) {
+
+                    int topOffset = (int) ((mOutcomesTopCollapsed - mOutcomesTopExpanded) * offsetFactor - verticalOffset);
+                    int leftOffset = (int) ((mOutcomesLeftCollapsed - mOutcomesLeftExpanded) * offsetFactor);
+                    offsetHelper.setTopAndBottomOffset(topOffset);
+                    offsetHelper.setLeftAndRightOffset(leftOffset);
+                    Log.d(TAG, "onOffsetChanged(), offsetting title top = " + topOffset + ", left = " + leftOffset + ", vericalOffset = " + verticalOffset);
+                    Log.d(TAG, "onOffsetChanged(), offsetting title mOutcomesLeftCollapsed = " + mOutcomesLeftCollapsed + ", mOutcomesLeftExpanded = " + mOutcomesLeftExpanded);
+                }
             }
         }
     }
