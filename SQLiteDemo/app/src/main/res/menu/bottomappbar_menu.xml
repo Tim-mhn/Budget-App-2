@@ -23,11 +23,4 @@
         app:actionLayout="@layout/menu_item_objective"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/app_bar_settings"
-        android:title="@string/settings"
-        app:actionLayout="@layout/menu_item_settings"
-        app:showAsAction="always"/>
-
-
 </menu>

@@ -64,7 +64,7 @@ public class UpdateObjectives extends AppCompatActivity {
         etExpense = (EditText) findViewById(R.id.etObjExpense);
         etIncome = (EditText) findViewById(R.id.etObjIncome);
         tvBalance = (TextView) findViewById(R.id.tvBalance);
-        tvMonth = (TextView) findViewById(R.id.tvMonth);
+        //tvMonth = (TextView) findViewById(R.id.tvMonth);
         tbToolBar = (Toolbar) findViewById(R.id.tbObjectivesToolbar);
         bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
         setSupportActionBar(bottomAppBar);
