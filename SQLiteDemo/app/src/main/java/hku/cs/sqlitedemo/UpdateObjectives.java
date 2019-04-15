@@ -64,7 +64,7 @@ public class UpdateObjectives extends AppCompatActivity {
         etExpense = (EditText) findViewById(R.id.etObjExpense);
         etIncome = (EditText) findViewById(R.id.etObjIncome);
         tvBalance = (TextView) findViewById(R.id.tvBalance);
-        tvMonth = (TextView) findViewById(R.id.tvMonth);
+        //tvMonth = (TextView) findViewById(R.id.tvMonth);
         tbToolBar = (Toolbar) findViewById(R.id.tbObjectivesToolbar);
         bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
         setSupportActionBar(bottomAppBar);
@@ -162,15 +162,16 @@ public class UpdateObjectives extends AppCompatActivity {
         addOneTextChangeListener(etIncome,true);
     }
 
+    public void onDetailClick(View v) {
+        Intent i = new Intent(this,MonthPieCharts.class);
+        startActivity(i);
+    }
+
     public void onNewTransactionClick(View v){
         Intent i = new Intent(this,NewTransaction.class);
         startActivity(i);
     }
 
-    public void onDetailClick(View v){
-        Intent i = new Intent(this,MonthPieCharts.class);
-        startActivity(i);
-    }
     public void backToMainActivity(View view){
         Intent i = new Intent(this,MainTransactions.class);
         startActivity(i);

@@ -207,6 +207,7 @@
             android:layout_height="wrap_content"
             android:onClick="onInsertClick"
             android:src="@drawable/ic_insert"
+            android:tint="@color/White"
             app:backgroundTint="@color/default_blue_light"
             app:layout_anchor="@id/bottom_app_bar"
             app:rippleColor="#FFFFFF" />

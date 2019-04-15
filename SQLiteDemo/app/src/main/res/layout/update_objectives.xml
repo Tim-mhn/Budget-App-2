@@ -90,15 +90,34 @@
 
         </LinearLayout>
 
-        <Button
-            android:text="@string/set"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSetObjectives"
-            android:id="@+id/setObjectiveButton"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/White"/>
+            android:layout_height="@dimen/forms_layout_height"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginEnd="@dimen/label_margin">
 
+            <Button
+                android:text="@string/text_btCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="backToMainActivity"
+                android:layout_weight="1"
+                android:id="@+id/cancelButton"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/White"/>
+
+            <Button
+                android:text="@string/set"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onSetObjectives"
+                android:layout_weight="1"
+                android:id="@+id/setObjectiveButton"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/White"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -113,6 +132,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_insert"
             android:onClick="onNewTransactionClick"
+            android:tint="@color/White"
             app:backgroundTint="@color/default_blue_light"
             app:layout_anchor="@id/bottom_app_bar"
             app:rippleColor="#FFFFFF" />
