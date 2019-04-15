@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="5dp">
+
+    <item
+        android:id="@+id/app_bar_transactions"
+        android:title="@string/transactions"
+        app:actionLayout="@layout/menu_item_transactions"
+        app:showAsAction="always|withText"/>
+
+
+    <item
+        android:id="@+id/app_bar_charts"
+        android:title="@string/charts"
+        app:actionLayout="@layout/menu_item_chart"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/app_bar_objective"
+        android:title="@string/objectives"
+        app:actionLayout="@layout/menu_item_objective"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/app_bar_settings"
+        android:title="@string/settings"
+        app:actionLayout="@layout/menu_item_settings"
+        app:showAsAction="always"/>
+
+
+</menu>

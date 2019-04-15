@@ -5,16 +5,23 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+/*
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;*/
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -29,6 +36,7 @@ public class MonthPieCharts extends AppCompatActivity {
     private List<TextView> catTextViews = new ArrayList<>();
     private TransactionsDatabase transactionsDb;
     private TextView tvMonth;
+    private BottomAppBar bottomBar;
     private int monthChart = Calendar.MONTH+1;
     private final List<Integer> colorList = new ArrayList<Integer>(Arrays.asList(
             Color.BLACK,
@@ -57,8 +65,21 @@ public class MonthPieCharts extends AppCompatActivity {
 
     public void findViews(){
         tvMonth = (TextView) findViewById(R.id.tvMonth);
+        bottomBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        setSupportActionBar(bottomBar);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        bottomBar.inflateMenu(R.menu.bottomappbar_menu);
+        MenuItem transactionsItem = menu.findItem(R.id.app_bar_charts);
+        TextView tvTransactions= transactionsItem.getActionView().findViewById(R.id.tvChartsItem);
+        tvTransactions.setTextColor(getResources().getColor(R.color.design_default_color_primary_dark));
+        tvTransactions.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.design_default_color_primary_dark)));
+        // tvTransactions.setCompoundDrawables(null, getResources().getDrawable(R.drawable.list_white_64,getApplicationContext().getTheme()),null,null);
+        // transactionsItem.setIcon(R.drawable.list_white_64);
+        return true;
+    }
     @Override
     protected void onStart(){
         super.onStart();
@@ -178,6 +199,25 @@ public class MonthPieCharts extends AppCompatActivity {
         catTextViews.clear();
     }
 
+    // Menu onClick methods
+
+    public void onObjectivesClick(View v){
+        Intent i = new Intent(this,UpdateObjectives.class);
+        startActivity(i);
+    }
+
+    public void onTransactionsClick(View v){
+        Intent i = new Intent(this,MainTransactions.class);
+        startActivity(i);
+    }
+
+    public void onDetailClick(View v){
+        // do nothing
+    }
+
+    public void onSettingsClick(View v){
+        // do nothing
+    }
 
     public void backToMainActivity(View v){
         Intent i = new Intent(this,MainTransactions.class);
