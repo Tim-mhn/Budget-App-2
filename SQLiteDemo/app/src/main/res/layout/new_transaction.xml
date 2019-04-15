@@ -174,4 +174,9 @@
         </LinearLayout>
     </LinearLayout>
 
+<<<<<<< HEAD
 </ScrollView>
+=======
+    </ScrollView>
+</androidx.cardview.widget.CardView>
+>>>>>>> master

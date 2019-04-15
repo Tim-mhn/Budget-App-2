@@ -3,11 +3,14 @@ package hku.cs.sqlitedemo;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.design.widget.TabLayout;
+import android.support.v7.widget.ToolbarWidgetWrapper;
+/*import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,8 +18,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.ToolbarWidgetWrapper;
+import android.support.v7.widget.ToolbarWidgetWrapper;
+*/
 import android.text.Editable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,6 +35,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.triggertrap.seekarc.SeekArc;
 
 import org.w3c.dom.Text;
@@ -46,7 +62,11 @@ public class MainTransactions extends AppCompatActivity {
     private TextView progressPercentageExpenses;
     private TextView progressPercentageIncomes;
     private Spinner filterSpinner;
+<<<<<<< HEAD
     private TabLayout tabs;
+=======
+    private BottomAppBar bottomBar;
+>>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +79,18 @@ public class MainTransactions extends AppCompatActivity {
             objDb = new ObjectivesDatabase(this);
         }
         findViews();
-        //setupFilterSpinner();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //if (getSupportActionBar() != null) {
-          //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //}
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        bottomBar.inflateMenu(R.menu.bottomappbar_menu);
+        MenuItem transactionsItem = menu.findItem(R.id.app_bar_transactions);
+        TextView tvTransactions= transactionsItem.getActionView().findViewById(R.id.tvTransactionsItem);
+        tvTransactions.setTextColor(getResources().getColor(R.color.design_default_color_primary_dark));
+        tvTransactions.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.design_default_color_primary_dark)));
+        // tvTransactions.setCompoundDrawables(null, getResources().getDrawable(R.drawable.list_white_64,getApplicationContext().getTheme()),null,null);
+        // transactionsItem.setIcon(R.drawable.list_white_64);
+        return true;
     }
 
     public void findViews(){
@@ -84,8 +108,16 @@ public class MainTransactions extends AppCompatActivity {
         progressPercentageExpenses.setText(String.valueOf(seekArcExpenses.getProgress()).concat("%"));
         progressPercentageIncomes.setText(String.valueOf(seekArcIncomes.getProgress()).concat("%"));
         //filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
+<<<<<<< HEAD
 
         tabs = (TabLayout) findViewById(R.id.tabs);
+=======
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        bottomBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        setSupportActionBar(bottomBar);
+>>>>>>> master
     }
 
     @Override
@@ -179,7 +211,7 @@ public class MainTransactions extends AppCompatActivity {
                 ivCategory = (ImageView) itemView.findViewById(R.id.ivCategory);
 
             }
-        }
+        }s
 
         @Override
         public int getItemCount() {
@@ -296,10 +328,29 @@ public class MainTransactions extends AppCompatActivity {
             }
         });
     }
+<<<<<<< HEAD
     */
+=======
+
+    // Menu onClick methods
+
+    public void onObjectivesClick(View v){
+        Intent i = new Intent(this,UpdateObjectives.class);
+        startActivity(i);
+    }
+
+    public void onTransactionsClick(View v){
+        // do nothing
+    }
+
+>>>>>>> master
     public void onDetailClick(View v){
         Intent i = new Intent(this, MonthPieCharts.class);
         startActivity(i);
+    }
+
+    public void onSettingsClick(View v){
+        // do nothing
     }
     // Click on the image to update the monthly objectives
     // Opens a new view to set the user's income / expense month objectives
