@@ -1,29 +1,22 @@
 package hku.cs.sqlitedemo;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
 import android.os.Bundle;
+/*import android.support.v7.app.AppCompatActivity;
 import android.provider.MediaStore;
-/*import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;*/
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-
 import android.widget.EditText;
+//import android.support.v7.widget.Toolbar;
 
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
@@ -39,6 +32,7 @@ public class UpdateObjectives extends AppCompatActivity {
     private EditText etIncome;
     private TextView tvBalance;
     private TextView tvMonth;
+    private Toolbar tbToolBar;
 
     // firstSet is true if it's the first time that we set our objective.
     // In that case we will insert a row in the DB insert of updating the (single) row
@@ -65,6 +59,9 @@ public class UpdateObjectives extends AppCompatActivity {
         etIncome = (EditText) findViewById(R.id.etObjIncome);
         tvBalance = (TextView) findViewById(R.id.tvBalance);
         tvMonth = (TextView) findViewById(R.id.tvMonth);
+        tbToolBar = (Toolbar) findViewById(R.id.tbObjectivesToolbar);
+        //setSupportActionBar(tbToolBar);
+        //getSupportActionBar().setTitle("My title");
 
         MonthObjective mO = objDb.getCurrentObjectives(); // check that line
         if (mO.getIncome() == 0 && mO.getExpense() == 0) {
@@ -81,7 +78,7 @@ public class UpdateObjectives extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         int monthInt = c.get(Calendar.MONTH);
         String month = getMonthForInt(monthInt);
-        tvMonth.setText(month);
+        //tvMonth.setText(month);
 
 
     }

@@ -25,14 +25,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
-                android:minHeight="100dp"
+                android:minHeight="@dimen/minimum_height_collapsing_layout"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <RelativeLayout
-                    android:id="@+id/relativeLayout"
+                    android:id="@+id/relativeLayoutIncomes"
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
                     android:background="@color/transparent"
                     android:clickable="true"
                     android:focusable="true"
@@ -40,32 +40,47 @@
                     app:layout_collapseMode="parallax">
 
                     <TextView
-                        android:id="@+id/txtCurrentPrgress"
+                        android:id="@+id/txtCurrentPrgressIncomes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="15dp"
                         android:background="@android:color/transparent"
                         android:fontFamily="sans-serif-condensed-light"
-                        android:text="@string/text_currentProgress"
+                        android:text="@string/text_currentProgressIncomes"
                         android:textAlignment="center"
                         android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/txtProgress"
+                        android:id="@+id/intCurrentProgressIncomes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:background="@android:color/transparent"
                         android:fontFamily="sans-serif-condensed-light"
                         android:textColor="#000000"
-                        android:textSize="54sp" />
+                        android:textSize="36sp" />
+
+                    <TextView
+                        android:id="@+id/txtRatioIncomes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="15dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="1,320 / 2,600"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
 
                     <com.triggertrap.seekarc.SeekArc
-                        android:id="@+id/seekArc"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
+                        android:id="@+id/seekArcIncomes"
+                        android:layout_width="@dimen/progress_bar_size"
+                        android:layout_height="@dimen/progress_bar_size"
                         android:padding="3dp"
                         seekarc:arcWidth="2dp"
                         seekarc:progress="50"
@@ -76,58 +91,68 @@
 
                 </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/txtIncomes"
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutExpenses"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="sans-serif-condensed-light"
-                    android:text="INCOMES"
-                    android:textAllCaps="false"
-                    android:textSize="14sp"
-                    android:textStyle="italic"
-                    app:layout_collapseMode="pin" />
-
-                <TextView
-                    android:id="@+id/intIncomes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-condensed-light"
-                    android:text="$578"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/Green"
-                    app:layout_collapseMode="pin" />
-
-                <TextView
-                    android:id="@+id/txtOutcomes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="end"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="sans-serif-condensed-light"
-                    android:text="OUTCOMES"
-                    android:textSize="14sp"
-                    android:textStyle="italic"
-                    app:layout_collapseMode="pin" />
+                    android:background="@color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="onProgressBarClick"
+                    app:layout_collapseMode="parallax">
 
-                <TextView
-                    android:id="@+id/intOutcomes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-condensed-light"
-                    android:text="$451"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/Red"
-                    app:layout_collapseMode="pin" />
+                    <TextView
+                        android:id="@+id/txtCurrentProgressExpenses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="15dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="@string/text_currentProgressExpenses"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/intCurrentProgressExpenses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textColor="#000000"
+                        android:textSize="36sp" />
+
+                    <TextView
+                        android:id="@+id/txtRatioExpenses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="15dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="1,320 / 2,600"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                    <com.triggertrap.seekarc.SeekArc
+                        android:id="@+id/seekArcExpenses"
+                        android:layout_width="@dimen/progress_bar_size"
+                        android:layout_height="@dimen/progress_bar_size"
+                        android:padding="3dp"
+                        seekarc:arcWidth="2dp"
+                        seekarc:progress="50"
+                        seekarc:rotation="270"
+                        seekarc:startAngle="315"
+                        seekarc:sweepAngle="270"
+                        seekarc:touchInside="false" />
+
+                </RelativeLayout>
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -136,10 +161,36 @@
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/CardView.Dark" />
 
-                <!--
-            </android.support.design.widget.CollapsingToolbarLayout>
-            -->
             </hku.cs.sqlitedemo.CollapsingImageLayout>
+
+            <!--
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/LightGrey"/>
+            -->
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="20sp"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabIndicatorColor="@color/colorPrimary">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="All"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Incomes" />
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Expenses" />
+
+            </com.google.android.material.tabs.TabLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 

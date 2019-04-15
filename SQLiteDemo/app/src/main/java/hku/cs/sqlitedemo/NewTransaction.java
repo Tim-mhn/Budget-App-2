@@ -10,17 +10,13 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-/*import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;*/
 import android.text.Editable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -29,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
@@ -46,6 +43,7 @@ public class NewTransaction extends AppCompatActivity {
     private EditText etAmount;
     private Spinner spinCategory;
     private TextView tvDate;
+    private Toolbar tbToolBar;
 
     private int year;
     private int month;
@@ -86,7 +84,7 @@ public class NewTransaction extends AppCompatActivity {
         etAmount = (EditText) findViewById(R.id.etAmount);
         spinCategory = (Spinner) findViewById(R.id.spinCategory);
         tvDate = (TextView) findViewById(R.id.tvDate);
-
+        tbToolBar = (Toolbar) findViewById(R.id.NewTransactionToolbar);
     }
 
     private void setupCategoriesSpinner(){
