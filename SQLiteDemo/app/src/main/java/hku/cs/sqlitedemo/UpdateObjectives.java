@@ -167,6 +167,10 @@ public class UpdateObjectives extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onDetailClick(View v){
+        Intent i = new Intent(this,MonthPieCharts.class);
+        startActivity(i);
+    }
     public void backToMainActivity(View view){
         Intent i = new Intent(this,MainTransactions.class);
         startActivity(i);
