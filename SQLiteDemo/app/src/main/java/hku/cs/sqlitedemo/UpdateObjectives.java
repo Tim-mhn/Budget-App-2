@@ -1,6 +1,7 @@
 package hku.cs.sqlitedemo;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 /*import android.support.v7.app.AppCompatActivity;
 import android.provider.MediaStore;
@@ -8,6 +9,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;*/
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 //import android.support.v7.widget.Toolbar;
@@ -17,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
@@ -33,6 +38,7 @@ public class UpdateObjectives extends AppCompatActivity {
     private TextView tvBalance;
     private TextView tvMonth;
     private Toolbar tbToolBar;
+    private BottomAppBar bottomAppBar;
 
     // firstSet is true if it's the first time that we set our objective.
     // In that case we will insert a row in the DB insert of updating the (single) row
@@ -60,8 +66,8 @@ public class UpdateObjectives extends AppCompatActivity {
         tvBalance = (TextView) findViewById(R.id.tvBalance);
         //tvMonth = (TextView) findViewById(R.id.tvMonth);
         tbToolBar = (Toolbar) findViewById(R.id.tbObjectivesToolbar);
-        //setSupportActionBar(tbToolBar);
-        //getSupportActionBar().setTitle("My title");
+        bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        setSupportActionBar(bottomAppBar);
 
         MonthObjective mO = objDb.getCurrentObjectives(); // check that line
         if (mO.getIncome() == 0 && mO.getExpense() == 0) {
@@ -81,6 +87,16 @@ public class UpdateObjectives extends AppCompatActivity {
         //tvMonth.setText(month);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        bottomAppBar.inflateMenu(R.menu.bottomappbar_menu);
+        MenuItem transactionsItem = menu.findItem(R.id.app_bar_objective);
+        TextView tvTransactions= transactionsItem.getActionView().findViewById(R.id.tvObjectiveItem);
+        tvTransactions.setTextColor(getResources().getColor(R.color.design_default_color_primary_dark));
+        tvTransactions.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.design_default_color_primary_dark)));
+        return true;
     }
 
     private String getMonthForInt(int num) {
@@ -144,6 +160,11 @@ public class UpdateObjectives extends AppCompatActivity {
 
         addOneTextChangeListener(etExpense,false);
         addOneTextChangeListener(etIncome,true);
+    }
+
+    public void onNewTransactionClick(View v){
+        Intent i = new Intent(this,NewTransaction.class);
+        startActivity(i);
     }
 
     public void backToMainActivity(View view){

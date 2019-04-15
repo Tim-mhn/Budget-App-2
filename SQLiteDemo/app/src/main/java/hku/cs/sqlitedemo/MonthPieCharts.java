@@ -214,6 +214,11 @@ public class MonthPieCharts extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onNewTransactionsClick(View v){
+        Intent i = new Intent(this,NewTransaction.class);
+        startActivity(i);
+    }
+
     public void onDetailClick(View v){
         // do nothing
     }

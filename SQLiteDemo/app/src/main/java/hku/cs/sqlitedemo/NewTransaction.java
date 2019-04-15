@@ -7,10 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,6 +29,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
@@ -86,6 +91,7 @@ public class NewTransaction extends AppCompatActivity {
         tvDate = (TextView) findViewById(R.id.tvDate);
         tbToolBar = (Toolbar) findViewById(R.id.NewTransactionToolbar);
     }
+
 
     private void setupCategoriesSpinner(){
 
