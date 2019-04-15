@@ -164,7 +164,7 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:theme="@style/Widget.MaterialComponents.BottomAppBar"
             app:backgroundTint="@color/default_blue_light"

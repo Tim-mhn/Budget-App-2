@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="5dp">
 
     <item
         android:id="@+id/app_bar_transactions"
-        android:icon="@drawable/list_contour_white_64"
         android:title="@string/transactions"
         android:onClick="onTransactionsClick"
-        app:showAsAction="withText|ifRoom"/>
+        app:actionLayout="@layout/menu_item_transactions"
+        app:showAsAction="always|withText"/>
+
 
     <item
         android:id="@+id/app_bar_charts"
-        android:icon="@drawable/chart_contour_white_64"
         android:title="@string/charts"
         android:onClick="onDetailClick"
-        app:showAsAction="withText|ifRoom"/>
+        app:actionLayout="@layout/menu_item_chart"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/app_bar_objective"
-        android:icon="@drawable/objective_contour_white_64"
         android:title="@string/objectives"
-        android:onClick="onObjectivesClick"
-        app:showAsAction="withText|ifRoom"/>
+        app:actionLayout="@layout/menu_item_objective"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/app_bar_settings"
-        android:icon="@drawable/settings_contour_white_64"
         android:title="@string/settings"
         android:onClick="onSettingsClick"
-        app:showAsAction="withText|ifRoom"/>
+        app:actionLayout="@layout/menu_item_settings"
+        app:showAsAction="always"/>
 
 
 </menu>

@@ -3,6 +3,7 @@ package hku.cs.sqlitedemo;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -31,6 +32,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -71,9 +74,14 @@ public class MainTransactions extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         bottomBar.inflateMenu(R.menu.bottomappbar_menu);
         MenuItem transactionsItem = menu.findItem(R.id.app_bar_transactions);
-        transactionsItem.setIcon(R.drawable.list_white_64);
+        TextView tvTransactions= transactionsItem.getActionView().findViewById(R.id.tvTransactionsItem);
+        tvTransactions.setTextColor(getResources().getColor(R.color.design_default_color_primary_dark));
+        tvTransactions.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.design_default_color_primary_dark)));
+        // tvTransactions.setCompoundDrawables(null, getResources().getDrawable(R.drawable.list_white_64,getApplicationContext().getTheme()),null,null);
+        // transactionsItem.setIcon(R.drawable.list_white_64);
         return true;
     }
+
     public void findViews(){
         rvSpots = (RecyclerView) findViewById(R.id.rvSpots);
         rvSpots.setLayoutManager(new LinearLayoutManager(this));
@@ -275,6 +283,11 @@ public class MainTransactions extends AppCompatActivity {
     public void onDetailClick(MenuItem item){
         // Opens the Pie Charts View
         Intent i = new Intent(this, MonthPieCharts.class);
+        startActivity(i);
+    }
+
+    public void onObjectivesClick(View v){
+        Intent i = new Intent(this,UpdateObjectives.class);
         startActivity(i);
     }
 
