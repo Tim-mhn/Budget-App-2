@@ -3,15 +3,19 @@ package hku.cs.sqlitedemo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.design.widget.AppBarLayout;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
-import android.support.v7.widget.Toolbar;
+/*import android.support.design.widget.AppBarLayout;*/
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+/*import android.support.v7.widget.Toolbar;*/
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 public class CollapsingImageLayout extends FrameLayout{
     private static final String TAG = "CollapsingImageLayout";
@@ -65,7 +69,7 @@ public class CollapsingImageLayout extends FrameLayout{
 
 
         ViewCompat.setOnApplyWindowInsetsListener(this,
-                new android.support.v4.view.OnApplyWindowInsetsListener() {
+                new androidx.core.view.OnApplyWindowInsetsListener() {
                     @Override
                     public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
                         return setWindowInsets(insets);

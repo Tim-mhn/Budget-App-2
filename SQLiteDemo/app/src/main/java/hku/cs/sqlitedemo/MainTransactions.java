@@ -7,15 +7,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+/*import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.ToolbarWidgetWrapper;
+import android.support.v7.widget.ToolbarWidgetWrapper;*/
 import android.text.Editable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,6 +29,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.triggertrap.seekarc.SeekArc;
 
 import org.w3c.dom.Text;
@@ -43,6 +52,7 @@ public class MainTransactions extends AppCompatActivity {
     private SeekArc seekArc;
     private TextView progressPerentage;
     private Spinner filterSpinner;
+    private BottomAppBar bottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +65,15 @@ public class MainTransactions extends AppCompatActivity {
             objDb = new ObjectivesDatabase(this);
         }
         findViews();
-        //setupFilterSpinner();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //if (getSupportActionBar() != null) {
-          //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //}
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        bottomBar.inflateMenu(R.menu.bottomappbar_menu);
+        MenuItem transactionsItem = menu.findItem(R.id.app_bar_transactions);
+        transactionsItem.setIcon(R.drawable.list_white_64);
+        return true;
+    }
     public void findViews(){
         rvSpots = (RecyclerView) findViewById(R.id.rvSpots);
         rvSpots.setLayoutManager(new LinearLayoutManager(this));
@@ -75,6 +84,11 @@ public class MainTransactions extends AppCompatActivity {
 
         progressPerentage.setText(String.valueOf(seekArc.getProgress()).concat("%"));
         //filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        bottomBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        setSupportActionBar(bottomBar);
     }
 
     @Override
@@ -255,6 +269,26 @@ public class MainTransactions extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void onDetailClick(MenuItem item){
+        // Opens the Pie Charts View
+        Intent i = new Intent(this, MonthPieCharts.class);
+        startActivity(i);
+    }
+
+    public void onSettingsClick(MenuItem item){
+        // open settings view if we ever make it
+    }
+
+    public void onTransactionsClick(MenuItem item){
+        // do nothing
+    }
+
+    public void onObjectivesClick(MenuItem item){
+        Intent i = new Intent(this,UpdateObjectives.class);
+        startActivity(i);
     }
 
     public void onDetailClick(View v){

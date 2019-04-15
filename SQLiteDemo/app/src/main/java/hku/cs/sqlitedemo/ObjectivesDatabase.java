@@ -10,8 +10,8 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+/*import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;*/
 import android.text.Editable;
 import android.view.View;
 import android.view.ViewGroup;

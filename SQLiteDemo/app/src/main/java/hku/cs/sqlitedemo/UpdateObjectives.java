@@ -10,8 +10,8 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+/*import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;*/
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -23,13 +23,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
 
 import java.util.Calendar;
 
 
-public class UpdateObjectives extends AppCompatActivity{
+public class UpdateObjectives extends AppCompatActivity {
 
     private double expense = 0;
     private double income = 0;
