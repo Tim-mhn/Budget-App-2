@@ -13,7 +13,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/NewTransactionToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -30,7 +30,7 @@
                 android:textColor="@color/White"
                 android:textSize="24dp" />
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:id="@+id/tvType"

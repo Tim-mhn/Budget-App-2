@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/tbObjectivesToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -34,7 +34,7 @@
                 android:textColor="@color/White"
                 android:textSize="24dp" />
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
 
         <LinearLayout
@@ -46,7 +46,7 @@
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="6dp">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ObjExpense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,9 +59,9 @@
                     android:layout_height="wrap_content"
                     android:inputType="number" />
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ObjIncome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                     android:inputType="number"
                     android:textColorHighlight="@color/colorPrimary"/>
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <TextView

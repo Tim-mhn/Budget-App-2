@@ -8,9 +8,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+/*
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.ToolbarWidgetWrapper;
-/*import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +44,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.tabs.TabLayout;
 import com.triggertrap.seekarc.SeekArc;
 
 import org.w3c.dom.Text;
@@ -62,11 +64,8 @@ public class MainTransactions extends AppCompatActivity {
     private TextView progressPercentageExpenses;
     private TextView progressPercentageIncomes;
     private Spinner filterSpinner;
-<<<<<<< HEAD
     private TabLayout tabs;
-=======
     private BottomAppBar bottomBar;
->>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,16 +107,13 @@ public class MainTransactions extends AppCompatActivity {
         progressPercentageExpenses.setText(String.valueOf(seekArcExpenses.getProgress()).concat("%"));
         progressPercentageIncomes.setText(String.valueOf(seekArcIncomes.getProgress()).concat("%"));
         //filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
-<<<<<<< HEAD
 
         tabs = (TabLayout) findViewById(R.id.tabs);
-=======
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         bottomBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
         setSupportActionBar(bottomBar);
->>>>>>> master
     }
 
     @Override
@@ -211,7 +207,7 @@ public class MainTransactions extends AppCompatActivity {
                 ivCategory = (ImageView) itemView.findViewById(R.id.ivCategory);
 
             }
-        }s
+        }
 
         @Override
         public int getItemCount() {
@@ -330,7 +326,6 @@ public class MainTransactions extends AppCompatActivity {
     }
 <<<<<<< HEAD
     */
-=======
 
     // Menu onClick methods
 
@@ -343,7 +338,6 @@ public class MainTransactions extends AppCompatActivity {
         // do nothing
     }
 
->>>>>>> master
     public void onDetailClick(View v){
         Intent i = new Intent(this, MonthPieCharts.class);
         startActivity(i);
