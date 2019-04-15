@@ -162,6 +162,11 @@ public class UpdateObjectives extends AppCompatActivity {
         addOneTextChangeListener(etIncome,true);
     }
 
+    public void onDetailClick(View v) {
+        Intent i = new Intent(this,MonthPieCharts.class);
+        startActivity(i);
+    }
+
     public void onNewTransactionClick(View v){
         Intent i = new Intent(this,NewTransaction.class);
         startActivity(i);
