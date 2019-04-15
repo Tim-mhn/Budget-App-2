@@ -430,6 +430,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_insert"
             android:onClick="onNewTransactionsClick"
+            android:tint="@color/White"
             app:backgroundTint="@color/default_blue_light"
             app:layout_anchor="@id/bottom_app_bar"
             app:rippleColor="#FFFFFF" />
@@ -446,16 +447,6 @@
             app:hideOnScroll="true"
             app:layout_scrollFlags="scroll|enterAlways" />
 
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_insert"
-            android:tint="@color/White"
-            app:backgroundTint="@color/default_blue_light"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:rippleColor="#FFFFFF" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!-- Doughnut chart ends here -->
