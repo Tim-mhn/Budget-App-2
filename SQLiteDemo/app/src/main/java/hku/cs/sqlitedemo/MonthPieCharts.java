@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 
@@ -37,6 +38,7 @@ public class MonthPieCharts extends AppCompatActivity {
     private TransactionsDatabase transactionsDb;
     private TextView tvMonth;
     private BottomAppBar bottomBar;
+    private TextView toolBarTitle;
     private int monthChart = Calendar.MONTH+1;
     private final List<Integer> colorList = new ArrayList<Integer>(Arrays.asList(
             Color.BLACK,
@@ -64,8 +66,9 @@ public class MonthPieCharts extends AppCompatActivity {
     }
 
     public void findViews(){
-        tvMonth = (TextView) findViewById(R.id.tvMonth);
+        //tvMonth = (TextView) findViewById(R.id.tvMonth);
         bottomBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        toolBarTitle = (TextView) findViewById(R.id.toolbar_title);
         setSupportActionBar(bottomBar);
     }
 
@@ -102,7 +105,7 @@ public class MonthPieCharts extends AppCompatActivity {
 
     public void setPieChart(){
 
-        tvMonth.setText(getMonthForInt(monthChart));
+        toolBarTitle.setText(getMonthForInt(monthChart));
         List<Transaction> transactions = transactionsDb.getTransactions("Expense", monthChart);
         List<String> categories = new ArrayList<>();
         List<Float> amounts = new ArrayList<>();
