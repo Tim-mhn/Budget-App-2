@@ -161,7 +161,7 @@ public class MainTransactions extends AppCompatActivity {
                 ivCategory = (ImageView) itemView.findViewById(R.id.ivCategory);
 
             }
-        }
+        }s
 
         @Override
         public int getItemCount() {
@@ -279,34 +279,24 @@ public class MainTransactions extends AppCompatActivity {
         });
     }
 
-
-    public void onDetailClick(MenuItem item){
-        // Opens the Pie Charts View
-        Intent i = new Intent(this, MonthPieCharts.class);
-        startActivity(i);
-    }
+    // Menu onClick methods
 
     public void onObjectivesClick(View v){
         Intent i = new Intent(this,UpdateObjectives.class);
         startActivity(i);
     }
 
-    public void onSettingsClick(MenuItem item){
-        // open settings view if we ever make it
-    }
-
-    public void onTransactionsClick(MenuItem item){
+    public void onTransactionsClick(View v){
         // do nothing
-    }
-
-    public void onObjectivesClick(MenuItem item){
-        Intent i = new Intent(this,UpdateObjectives.class);
-        startActivity(i);
     }
 
     public void onDetailClick(View v){
         Intent i = new Intent(this, MonthPieCharts.class);
         startActivity(i);
+    }
+
+    public void onSettingsClick(View v){
+        // do nothing
     }
     // Click on the image to update the monthly objectives
     // Opens a new view to set the user's income / expense month objectives

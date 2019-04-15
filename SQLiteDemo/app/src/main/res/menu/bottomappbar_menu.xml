@@ -7,7 +7,6 @@
     <item
         android:id="@+id/app_bar_transactions"
         android:title="@string/transactions"
-        android:onClick="onTransactionsClick"
         app:actionLayout="@layout/menu_item_transactions"
         app:showAsAction="always|withText"/>
 
@@ -15,7 +14,6 @@
     <item
         android:id="@+id/app_bar_charts"
         android:title="@string/charts"
-        android:onClick="onDetailClick"
         app:actionLayout="@layout/menu_item_chart"
         app:showAsAction="always"/>
 
@@ -28,7 +26,6 @@
     <item
         android:id="@+id/app_bar_settings"
         android:title="@string/settings"
-        android:onClick="onSettingsClick"
         app:actionLayout="@layout/menu_item_settings"
         app:showAsAction="always"/>
 
