@@ -30,9 +30,13 @@ public class CollapsingImageLayout extends FrameLayout{
 
     private int mIncomesTopExpanded;
 
-    private int mProgressBarLeftCollapsed;
+    private int mExpensesBarLeftCollapsed;
 
-    private int mProgressBarTopCollapsed;
+    private int mIncomesBarLeftCollapsed;
+
+    private int mExpensesBarTopCollapsed;
+
+    private int mIncomesBarTopCollapsed;
 
     private int mOutcomesLeftCollapsed;
 
@@ -55,13 +59,12 @@ public class CollapsingImageLayout extends FrameLayout{
     public CollapsingImageLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mProgressBarLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_left_margin_collapsed);
-        mProgressBarTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.image_top_margin_collapsed);
+        mExpensesBarLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.expenses_left_margin_collapsed);
+        mIncomesBarLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.incomes_left_margin_collapsed);
+        mExpensesBarTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.expenses_top_margin_collapsed);
+        mIncomesBarTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.incomes_top_margin_collapsed);
         mOutcomesLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.outcomes_left_margin_collapsed);
         mOutcomesTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.outcomes_top_margin_collapsed);
-        mIncomesLeftCollapsed = getResources().getDimensionPixelOffset(R.dimen.incomes_left_margin_collapsed);
-        mIncomesTopCollapsed = getResources().getDimensionPixelOffset(R.dimen.incomes_top_margin_collapsed);
-
 
 
         ViewCompat.setOnApplyWindowInsetsListener(this,
@@ -126,7 +129,7 @@ public class CollapsingImageLayout extends FrameLayout{
             getViewOffsetHelper(child).onViewLayout();
 
             switch (child.getId()) {
-                case R.id.relativeLayout:
+                case R.id.relativeLayoutExpenses:
                     mProgressBarLeftExpanded = child.getLeft();
                     mProgressBarTopExpanded = child.getTop();
                     break;
@@ -165,20 +168,35 @@ public class CollapsingImageLayout extends FrameLayout{
                     }
                 }
 
-                if (child.getId() == R.id.relativeLayout) {
+                if (child.getId() == R.id.relativeLayoutExpenses) {
 
-                    float scaleFactor = 1F - offsetFactor * .65F ;
+                    float scaleFactor = 1F - offsetFactor * .95F ;
                     child.setScaleX(scaleFactor);
                     child.setScaleY(scaleFactor);
 
-                    int topOffset = (int) ((mProgressBarTopCollapsed - mProgressBarTopExpanded) * offsetFactor) - verticalOffset;
-                    int leftOffset = (int) ((mProgressBarLeftCollapsed - mProgressBarLeftExpanded) * offsetFactor);
+                    int topOffset = (int) ((mExpensesBarTopCollapsed - mProgressBarTopExpanded) * offsetFactor) - verticalOffset;
+                    int leftOffset = (int) ((mExpensesBarLeftCollapsed - mProgressBarLeftExpanded) * offsetFactor);
                     child.setPivotX(240);
                     child.setPivotY(-110);
                     offsetHelper.setTopAndBottomOffset(topOffset);
                     offsetHelper.setLeftAndRightOffset(leftOffset);
                 }
 
+                if (child.getId() == R.id.relativeLayoutIncomes) {
+
+                    float scaleFactor = 1F - offsetFactor * .95F ;
+                    child.setScaleX(scaleFactor);
+                    child.setScaleY(scaleFactor);
+
+                    int topOffset = (int) ((mIncomesBarTopCollapsed - mProgressBarTopExpanded) * offsetFactor) - verticalOffset;
+                    int leftOffset = (int) ((mIncomesBarLeftCollapsed - mProgressBarLeftExpanded) * offsetFactor);
+                    child.setPivotX(240);
+                    child.setPivotY(-110);
+                    offsetHelper.setTopAndBottomOffset(topOffset);
+                    offsetHelper.setLeftAndRightOffset(leftOffset);
+                }
+
+                /*
                 if (child.getId() == R.id.intIncomes) {
 
                     int topOffset = (int) ((mIncomesTopCollapsed - mIncomesTopExpanded) * offsetFactor - verticalOffset);
@@ -220,6 +238,7 @@ public class CollapsingImageLayout extends FrameLayout{
                     Log.d(TAG, "onOffsetChanged(), offsetting title top = " + topOffset + ", left = " + leftOffset + ", vericalOffset = " + verticalOffset);
                     Log.d(TAG, "onOffsetChanged(), offsetting title mOutcomesLeftCollapsed = " + mOutcomesLeftCollapsed + ", mOutcomesLeftExpanded = " + mOutcomesLeftExpanded);
                 }
+                */
             }
         }
     }

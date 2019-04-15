@@ -46,7 +46,9 @@
     <string name="text_NotGranted">not granted</string>
     <string name="text_SpotDetail">Spot Detail</string>
     <string name="text_NoDataFound">no data found</string>
-    <string name="text_currentProgress">EXPENSES\nPROGRESS</string>
+    <string name="text_currentProgressExpenses">EXPENSES</string>
+    <string name="text_currentProgressIncomes">INCOMES</string>
+
 
     <string-array name="categories_array">
         <item>Nightlife</item>

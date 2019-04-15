@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp">
+        android:layout_height="wrap_content" >
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tbObjectivesToolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="6dp">
-
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:theme="@style/ToolBarStyle">
             <ImageView
                 android:id="@+id/ivBackArrow"
-                android:layout_centerVertical="true"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:paddingTop="5dp"
-                android:src="@drawable/back_arrow"
-                android:onClick="backToMainActivity"/>
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/white_back_arrow"
+                android:onClick="backToMainActivity"
+                android:backgroundTint="@color/colorPrimary"/>
 
             <TextView
-                android:id="@+id/tvBudgetTransactions"
-                android:layout_width="wrap_content"
-                android:layout_height="54dp"
-                android:paddingStart="50sp"
-                android:paddingEnd="50sp"
-                android:paddingBottom="3sp"
-                android:text="@string/budget_objectives"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/label_margin"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="    Update Objectives"
+                android:textColor="@color/White"
+                android:textSize="24dp" />
+
+        </android.support.v7.widget.Toolbar>
+
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="6dp"
@@ -53,148 +46,63 @@
             android:layout_marginEnd="6dp"
             android:layout_marginBottom="6dp">
 
-
-            <TextView
-                android:text="April"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ObjExpense"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvMonth"
-                android:textSize="30sp"
-                android:textStyle=""
-                android:textAlignment="center"
-                android:paddingStart="150dp"
-                android:paddingBottom="3sp"/>
+                android:layout_height="wrap_content"
+                android:hint="Expense"
+                android:theme="@style/TextLabel">
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/etObjExpense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
 
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            app:cardBackgroundColor="@color/cardview_light_background"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp">
+            </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/ObjIncome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="6dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginBottom="6dp">
+                android:layout_height="wrap_content"
+                android:hint="Income"
+                android:theme="@style/TextLabel">
 
-                <LinearLayout
-                    android:orientation="horizontal"
+                <EditText
+                    android:id="@+id/etObjIncome"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="6dp">
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColorHighlight="@color/colorPrimary"/>
 
-                    <TextView
-                        android:id="@+id/tvExpense"
-                        android:layout_width="267dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingBottom="3sp"
-                        android:text="@string/expense"
-                        android:textSize="30sp"
-                        android:textStyle="" />
+            </android.support.design.widget.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/etObjExpense"
-                        android:layout_width="380dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:inputType="numberDecimal"
-                        android:textAlignment="viewStart"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="6dp">
-
-                    <TextView
-                        android:text="@string/income"
-                        android:layout_width="267dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingBottom="3sp"
-                        android:textSize="30sp"
-                        android:textStyle=""/>
-
-                    <EditText
-                        android:id="@+id/etObjIncome"
-                        android:layout_width="380dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:inputType="numberDecimal"
-                        android:textAlignment="viewStart"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </android.support.v7.widget.CardView>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="6dp">
 
             <TextView
                 android:text="@string/balance"
-                android:layout_width="267dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingBottom="3sp"
-                android:textSize="30sp"
-                android:textStyle=""/>
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"/>
 
             <TextView
                 android:text=""
                 android:id="@+id/tvBalance"
-                android:layout_width="267dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingBottom="3sp"
-                android:textSize="30sp"
-                android:textStyle=""/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="6dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="6dp">
-
-            <Button
-                android:text="@string/set"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onSetObjectives"
-                android:id="@+id/setObjectiveButton"
-                android:layout_weight="1" />
+                android:textSize="24sp"
+                android:layout_marginStart="5dp"/>
+
         </LinearLayout>
+
+        <Button
+            android:text="@string/set"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onSetObjectives"
+            android:id="@+id/setObjectiveButton"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/White"/>
     </LinearLayout>
 
 

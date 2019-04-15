@@ -1,196 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/NewTransactionToolbar"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:layout_gravity="center_horizontal">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:theme="@style/ToolBarStyle">
+
             <TextView
-                android:text="@string/update_transaction"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvNewTransaction"
-                android:layout_weight="1"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:paddingBottom="3sp"/>
-        </LinearLayout>
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Update transaction"
+                android:textColor="@color/White"
+                android:textSize="24dp" />
 
-
+        </android.support.v7.widget.Toolbar>
 
         <TextView
-            android:text="Type"
+            android:id="@+id/tvType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvType"/>
-        <LinearLayout
-            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/label_margin"
+            android:fontFamily="sans-serif-light"
+            android:text="Type" />
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <RadioGroup
-                android:layout_width="0px"
+            android:layout_height="37dp"
+            android:id="@+id/rgType"
+            android:orientation="horizontal"
+            android:layout_marginStart="11dp">
+            <RadioButton
+                android:text="Expense"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:id="@+id/rgType"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:text="Expense"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rbExpense"
-                    android:layout_weight="1"
-                    android:textSize="14sp"/>
-                <RadioButton
-                    android:text="Income"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rbIncome"
-                    android:layout_weight="1"
-                    android:textSize="14sp"/>
-            </RadioGroup>
-        </LinearLayout>
+                android:id="@+id/rbExpense"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:buttonTint="@color/colorPrimary"/>
+            <RadioButton
+                android:text="Income"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rbIncome"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:buttonTint="@color/colorPrimary"/>
+        </RadioGroup>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="@dimen/forms_horizontal_line_height"
+            android:background="@android:color/darker_gray"
+            android:layout_marginStart="@dimen/horizontal_separator_margin"
+            android:layout_marginEnd="@dimen/horizontal_separator_margin"/>
 
         <TextView
             android:text="Amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvAmount"/>
-        <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/tvAmount"
+            android:layout_marginStart="@dimen/label_margin"/>
+
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="38dp">
-
-            <EditText
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/etAmount"
-                android:layout_weight="2"
-                android:textAlignment="viewStart"
-                android:textSize="14sp"/>
-
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="@dimen/forms_layout_height"
+            android:inputType="numberDecimal"
+            android:id="@+id/etAmount"
+            android:textAlignment="viewStart"
+            android:textSize="14sp"
+            android:layout_marginStart="@dimen/forms_margin_start"
+            android:layout_marginEnd="@dimen/forms_margin_start"
+            android:theme="@style/EditTextTheme"/>
 
         <TextView
             android:text="Date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvDate0"/>
-        <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/tvDate0"
+            android:layout_marginStart="@dimen/label_margin"/>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <TextView
-                android:layout_width="0px"
-                android:id="@+id/tvDate"
-                android:layout_weight="2"
-                android:layout_height="match_parent"
-                android:textSize="14sp"
-                android:textAlignment="viewStart"/>
-        </LinearLayout>
+            android:layout_height="35dp"
+            android:id="@+id/tvDate"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/label_margin"
+            android:textColor="@color/Black"
+            android:textColorHighlight="@color/colorPrimary" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="@dimen/forms_horizontal_line_height"
+            android:background="@android:color/darker_gray"
+            android:layout_marginStart="@dimen/horizontal_separator_margin"
+            android:layout_marginEnd="@dimen/horizontal_separator_margin"/>
 
         <TextView
             android:text="@string/category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvCategory"/>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/spinCategory"
-                android:layout_weight="2"
-                android:gravity="center_vertical"
-                android:prompt="@string/category"/>
-        </LinearLayout>
+            android:id="@+id/tvCategory"
+            android:layout_marginStart="@dimen/label_margin"/>
 
-        <View
+        <Spinner
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="@dimen/forms_layout_height"
+            android:id="@+id/spinCategory"
+            android:gravity="center_vertical"
+            android:prompt="@string/category"
+            android:layout_margin="@dimen/forms_margin_start"
+            android:theme="@style/EditTextTheme"
+            style="@style/Widget.AppCompat.Spinner.Underlined"/>
 
         <TextView
             android:text="@string/description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/tvDescription"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDescription"
+            android:layout_marginStart="@dimen/label_margin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/forms_layout_height"
+            android:inputType="textCapSentences"
+            android:maxLength="100"
+            android:id="@+id/etDescription"
+            android:textSize="14sp"
+            android:layout_marginStart="@dimen/forms_margin_start"
+            android:layout_marginEnd="@dimen/forms_margin_start"
+            android:theme="@style/EditTextTheme"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="76dp">
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:singleLine="false"
-                android:inputType="textCapSentences|textMultiLine"
-                android:maxLength="150"
-                android:scrollHorizontally="false"
-                android:isScrollContainer="true"
-                android:maxLines="4"
-                android:ems="10"
-                android:id="@+id/etDescription"
-                android:layout_weight="1"
-                android:textSize="14sp"/>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="38dp">
+            android:layout_height="@dimen/forms_layout_height"
+            android:layout_marginStart="@dimen/label_margin"
+            android:layout_marginEnd="@dimen/label_margin">
             <Button
                 android:text="@android:string/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onCancelClick"
                 android:id="@+id/cancelButton"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/White"/>
             <Button
                 android:text="@string/update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onUpdateClick"
                 android:id="@+id/acceptButton"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textColor="@color/White"
+                android:background="@color/colorPrimary"/>
         </LinearLayout>
-
     </LinearLayout>
 
 </ScrollView>

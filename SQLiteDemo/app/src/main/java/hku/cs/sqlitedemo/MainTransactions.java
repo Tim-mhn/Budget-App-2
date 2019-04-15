@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.ToolbarWidgetWrapper;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -40,9 +41,12 @@ public class MainTransactions extends AppCompatActivity {
     private TransactionsAdapter transactionsAdapter;
     private ObjectivesDatabase objDb;
     private RecyclerView rvSpots;
-    private SeekArc seekArc;
-    private TextView progressPerentage;
+    private SeekArc seekArcExpenses;
+    private SeekArc seekArcIncomes;
+    private TextView progressPercentageExpenses;
+    private TextView progressPercentageIncomes;
     private Spinner filterSpinner;
+    private TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +73,19 @@ public class MainTransactions extends AppCompatActivity {
         rvSpots = (RecyclerView) findViewById(R.id.rvSpots);
         rvSpots.setLayoutManager(new LinearLayoutManager(this));
 
-        progressPerentage = (TextView) findViewById(R.id.txtProgress);
-        seekArc = (SeekArc) findViewById(R.id.seekArc);
-        seekArc.setEnabled(false);
+        progressPercentageExpenses = (TextView) findViewById(R.id.intCurrentProgressExpenses);
+        seekArcExpenses = (SeekArc) findViewById(R.id.seekArcExpenses);
+        seekArcExpenses.setEnabled(false);
 
-        progressPerentage.setText(String.valueOf(seekArc.getProgress()).concat("%"));
+        progressPercentageIncomes = (TextView) findViewById(R.id.intCurrentProgressIncomes);
+        seekArcIncomes = (SeekArc) findViewById(R.id.seekArcIncomes);
+        seekArcIncomes.setEnabled(false);
+
+        progressPercentageExpenses.setText(String.valueOf(seekArcExpenses.getProgress()).concat("%"));
+        progressPercentageIncomes.setText(String.valueOf(seekArcIncomes.getProgress()).concat("%"));
         //filterSpinner = (Spinner) findViewById(R.id.filterSpinner);
+
+        tabs = (TabLayout) findViewById(R.id.tabs);
     }
 
     @Override
@@ -95,10 +106,39 @@ public class MainTransactions extends AppCompatActivity {
             transactionsAdapter.notifyDataSetChanged();
         }
         //setupFilterSpinner();
+        addTabsListener();
         updateProgressBar();
 
+    }
 
+    public void addTabsListener() {
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            Context context;
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                System.out.println("Pressing tab " + tab.getText());
+                if (tab.getText().equals("All")) {
+                    transactionsAdapter.transactionList = getTransactionsList("All");
+                }
+                else if (tab.getText().equals("Incomes")) {
+                    transactionsAdapter.transactionList = getTransactionsList("Income");
+                }
+                else {
+                    transactionsAdapter.transactionList = getTransactionsList("Expense");
+                }
+                transactionsAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     public List<Transaction> getTransactionsList(String type){
@@ -163,9 +203,9 @@ public class MainTransactions extends AppCompatActivity {
             holder.tvDescription.setText(transaction.getDescription());
             holder.tvDate.setText(transaction.getDate());
             if(transaction.getType().equalsIgnoreCase("expense")){
-                holder.tvAmount.setTextColor(Color.RED);
+                holder.tvAmount.setTextColor(getResources().getColor(R.color.OrangeRed));
             } else {
-                holder.tvAmount.setTextColor(Color.GREEN);
+                holder.tvAmount.setTextColor(getResources().getColor(R.color.SeaGreen));
             }
             String imageName = Category.getImageName(transaction.getCategory());
             int imageSrc = context.getResources().getIdentifier("drawable/"+imageName,null,context.getPackageName());
@@ -198,7 +238,7 @@ public class MainTransactions extends AppCompatActivity {
         }
     }
 
-
+    /*
     public void onFilterList(String option){
         transactionsAdapter.transactionList = getTransactionsList(option);
         transactionsAdapter.notifyDataSetChanged();
@@ -256,7 +296,7 @@ public class MainTransactions extends AppCompatActivity {
             }
         });
     }
-
+    */
     public void onDetailClick(View v){
         Intent i = new Intent(this, MonthPieCharts.class);
         startActivity(i);
@@ -274,26 +314,58 @@ public class MainTransactions extends AppCompatActivity {
     // We get the total amount of expenses & income of transactions of the current month
 
     public void updateProgressBar(){
-        int percentage = getExpensePercentage();
-        seekArc.setProgress(percentage);
-        setProgressBarColor(percentage);
-        progressPerentage.setText(String.valueOf(percentage).concat("%"));
+        double monthExpenseObj = getMonthExpenseObj();
+        double monthIncomeObj = getMonthIncomeObj();
+        double monthTotalExpenses = getMonthTotal("expense");
+        double monthTotalIncomes = getMonthTotal("income");
+
+        int expensePercentage = getExpensePercentage(monthTotalExpenses, monthExpenseObj);
+        int incomePercentage = getIncomePercentage(monthTotalIncomes, monthIncomeObj);
+
+        seekArcExpenses.setProgress(expensePercentage);
+        seekArcIncomes.setProgress(incomePercentage);
+        setProgressBarColor(expensePercentage, "expenses");
+        setProgressBarColor(incomePercentage, "incomes");
+        progressPercentageExpenses.setText(String.valueOf(expensePercentage).concat("%"));
+        progressPercentageIncomes.setText(String.valueOf(incomePercentage).concat("%"));
+
+        TextView ratioIncomes = (TextView) findViewById(R.id.txtRatioIncomes);
+        TextView ratioExpenses = (TextView) findViewById(R.id.txtRatioExpenses);
+        ratioIncomes.setText("$ ".concat(String.valueOf((int)monthTotalIncomes)).concat(" / ").concat(String.valueOf((int)monthIncomeObj)));
+        ratioExpenses.setText("$ ".concat(String.valueOf((int)monthTotalExpenses)).concat(" / ").concat(String.valueOf((int)monthExpenseObj)));
     }
 
-    public void setProgressBarColor(int percentage){
+    public void setProgressBarColor(int percentage, String type){
         int colorId;
-        if(percentage<20){
-            colorId = getResources().getColor(R.color.LightSkyBlue);
-        } else if (percentage<50){
-            colorId = getResources().getColor(R.color.Lime);
-        } else if (percentage<80) {
-            colorId = getResources().getColor(R.color.DarkOrange);
-        } else if (percentage < 100) {
-            colorId = getResources().getColor(R.color.Tomato);
-        } else {
-            colorId = getResources().getColor(R.color.DarkRed);
+
+        if (type.matches("expenses")) {
+            if(percentage < 20){
+                colorId = getResources().getColor(R.color.LightSkyBlue);
+            } else if (percentage < 50){
+                colorId = getResources().getColor(R.color.Lime);
+            } else if (percentage < 80) {
+                colorId = getResources().getColor(R.color.DarkOrange);
+            } else if (percentage < 100) {
+                colorId = getResources().getColor(R.color.Tomato);
+            } else {
+                colorId = getResources().getColor(R.color.DarkRed);
+            }
+            seekArcExpenses.setProgressColor(colorId);
         }
-        seekArc.setProgressColor(colorId);
+        else {
+            if(percentage > 80){
+                colorId = getResources().getColor(R.color.LightSkyBlue);
+            } else if (percentage > 50){
+                colorId = getResources().getColor(R.color.Lime);
+            } else if (percentage > 20) {
+                colorId = getResources().getColor(R.color.DarkOrange);
+            } else if (percentage > 0) {
+                colorId = getResources().getColor(R.color.Tomato);
+            } else {
+                colorId = getResources().getColor(R.color.DarkRed);
+            }
+            seekArcIncomes.setProgressColor(colorId);
+        }
     }
 
     // getMonthAmount("expense") will return the current month total expenses
@@ -322,21 +394,14 @@ public class MainTransactions extends AppCompatActivity {
         return mO.getExpense();
     }
 
-    public int getIncomePercentage(){
-        double current = getMonthTotal("income");
-        double objective = getMonthIncomeObj();
-        double result = 100*current/objective;
-        int percentage = (int) result;
-        return percentage;
+    public int getIncomePercentage(double currentIncomes, double incomeObjective){
+        double percentage = 100 * currentIncomes / incomeObjective;
+        return (int) percentage;
     }
 
-    public int getExpensePercentage(){
-        double current = getMonthTotal("expense");
-        double objective = getMonthExpenseObj();
-        double result = 100*current/objective;
-        int percentage = (int) result;
-        //int percentage = (int) current;
-        return percentage;
+    public int getExpensePercentage(double currentExpenses, double expenseObjective){
+        double percentage = 100 * currentExpenses / expenseObjective;
+        return (int) percentage;
     }
 
     @Override

@@ -26,6 +26,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormatSymbols;
@@ -43,6 +44,7 @@ public class NewTransaction extends AppCompatActivity {
     private EditText etAmount;
     private Spinner spinCategory;
     private TextView tvDate;
+    private Toolbar tbToolBar;
 
     private int year;
     private int month;
@@ -83,7 +85,7 @@ public class NewTransaction extends AppCompatActivity {
         etAmount = (EditText) findViewById(R.id.etAmount);
         spinCategory = (Spinner) findViewById(R.id.spinCategory);
         tvDate = (TextView) findViewById(R.id.tvDate);
-
+        tbToolBar = (Toolbar) findViewById(R.id.NewTransactionToolbar);
     }
 
     private void setupCategoriesSpinner(){
